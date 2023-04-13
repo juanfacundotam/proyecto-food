@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
-    name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -17,19 +17,19 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    resume: {
+    summary: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     healthscore: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
-    steps: {
-      type: DataTypes.STRING,
+    instructions: {
+      type: DataTypes.JSON,
       allowNull: false,
     },
-    createdindb: {
+    created: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: true,
