@@ -1,0 +1,17 @@
+.divFooter {
+    border: 1px solid magenta;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+
+    backdrop-filter: blur(20px);
+    background-color: rgba(0, 0, 0, 0.507);
+    border-radius: 20px;
+
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+
+    z-index: 111;
+}

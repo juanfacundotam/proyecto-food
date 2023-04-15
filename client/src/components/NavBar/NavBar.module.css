@@ -1,0 +1,30 @@
+.divNavBar {
+    border: 1px solid fuchsia;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 80px;
+
+
+    backdrop-filter: blur(20px);
+    background-color: rgba(0, 0, 0, 0.507);
+    border-radius: 20px;
+
+    position: absolute;
+    width: 80%;
+
+    z-index: 111;
+}
+
+.active {
+    margin: 0 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.disable {
+    margin: 0 20px;
+    color: aquamarine;
+    text-decoration: none;
+}
