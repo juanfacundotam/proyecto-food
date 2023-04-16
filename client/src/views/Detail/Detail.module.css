@@ -1,0 +1,69 @@
+.container {
+  border: 3px solid green;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  z-index: 0;
+}
+.divDetail {
+  border: 3px solid green;
+  width: 1000px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+  z-index: 111;
+}
+
+.loading {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+  z-index: 111;
+}
+
+
+.divDetail .title {
+  border: 3px solid crimson;
+  margin: 0;
+  
+}
+.divDetail .id {
+  border: 3px solid crimson;
+  margin: 0;
+  
+}
+.divDetail .healthscore {
+  border: 3px solid crimson;
+  margin: 0;
+  
+}
+.divDetail .diet {
+  border: 3px solid crimson;
+  margin: 0;
+}
+.divDetail .instuction {
+  margin: 0;
+  border: 3px solid crimson;
+  
+  
+}
+.divDetail .summary {
+  margin: 0;
+  border: 3px solid crimson;
+  
+}
+.divDetail .image {
+  margin: 0;
+  border: 3px solid crimson;
+width: 20%;
+}

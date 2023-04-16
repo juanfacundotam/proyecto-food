@@ -1,6 +1,8 @@
 const getRecipeById = require("../controllers/getRecipeById");
 const getRecipeByQuery = require("../controllers/getRecipesQuery")
 const postRecipe = require("../controllers/postRecipe")
+const getAllRecipes = require("../controllers/getAllRecipes")
+
 
 const getRecipesIdHandler = async (req, res) => {
   const { idRecipe } = req.params;
@@ -15,14 +17,18 @@ const getRecipesIdHandler = async (req, res) => {
 
 const getRecipesQueryHandler = async (req, res) => {
   const {title} = req.query;
-  console.log("x")
   try {
-    if(title) {
-      const result = await getRecipeByQuery(title);
-      res.status(200).json(result);
-    } else {
-      throw Error("Receta no encontrada");
-    }
+    const results = title ? await getRecipeByQuery(title) : await getAllRecipes();
+    // if(title) {
+      
+    //   console.log("One")
+    //   const result = await getRecipeByQuery(title);
+    //   res.status(200).json(result);
+    // } else {
+    //   console.log("ALl")
+    //   const allResults = await getAllRecipes();
+    // }
+    res.status(200).json(results);
   } catch (error) {
     res.status(404).json({error: error.message});
   }

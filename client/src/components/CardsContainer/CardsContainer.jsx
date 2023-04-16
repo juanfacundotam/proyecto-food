@@ -3,18 +3,23 @@ import style from "./CardsContainer.module.css"
 import { useSelector } from "react-redux";
 
 const CardsContainer = () => {
-  const cardsArray = useSelector(state => state.characters) 
+  const recipes = useSelector(state => state.recipes)
+  
+  console.log(recipes)
+  
 
   return (
     <div className={style.divCardsContainer}>
-      {cardsArray.map((char) => {
+      {recipes?.map(({ id, title, image,healthScore, summary, instructions, diets }) => {
         return <Card 
-            key={char.id}
-            id={char.id}
-            name={char.name}
-            species={char.species}
-            gender={char.gender}
-            image={char.image}
+            key={id}
+            id={id}
+            title={title}
+            image={image}
+            healthScore={healthScore}
+            summary={summary}
+            instructions={instructions}
+            diets={diets}
         />;
       })}
     </div>
@@ -22,3 +27,4 @@ const CardsContainer = () => {
 };
 
 export default CardsContainer;
+//   const { id, title, image,healthScore, summary, instructions, diets } = response.data;

@@ -17,7 +17,8 @@ function App() {
         <Route path="/create" element={<Form />} />
         <Route path="/about" element={<About />} />
       </Routes>
-      <Footer />
+      {location.pathname !== "/" && <Footer />}
+
     </div>
   );
 }
