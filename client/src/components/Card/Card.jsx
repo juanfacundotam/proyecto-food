@@ -1,28 +1,21 @@
 import style from "./Card.module.css";
 import { Link } from "react-router-dom";
 
-const Card = ({
-  id,
-  title,
-  image,
-  healthScore,
-  summary,
-  instructions,
-  diets,
-}) => {
+const Card = ({ id, title, image, diets }) => {
   return (
     <div className={style.divCard}>
-      <Link to={`/detail/${id}`} className={style.linkDetail}>
-        <h1>{title}</h1>
-      </Link>
-      {/* <p>{id}</p>
-      <p>{healthScore}</p>
-      <p>{summary}</p>
-      <p>{instructions}</p> */}
-        <img src={image} alt="" />
-      {diets?.map((diet) => {
-        return <p>{diet}</p>;
-      })}
+      <img src={image} alt="Image Recipe" className={style.image} />
+      <div className={style.divText}>
+        <Link to={`/detail/${id}`} className={style.linkDetail}>
+          {title}
+        </Link>
+        <div className={style.divDiets}>
+          {diets?.map((diet) => {
+            return <p className={style.diet}>{diet}</p>;
+          })}
+        </div>
+
+      </div>
     </div>
   );
 };

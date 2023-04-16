@@ -39,8 +39,8 @@ const Detail = () => {
           <button className={style.button}>&lt;&lt;</button>
         </Link>
         <h1 className={style.title}>{title}</h1>
-        <p className={style.id}>{id}</p>
-        <p className={style.healthscore}>{healthscore}</p>
+
+        <p className={style.healthscore}>health score: {healthscore}</p>
         <p className={style.summary}>{summary}</p>
         <p className={style.instruction}>{instructions}</p>
         {diets?.map((diet) => {
