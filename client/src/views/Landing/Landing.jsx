@@ -18,9 +18,9 @@ const Landing = () => {
         pariatur ad temporibus quibusdam iste praesentium aperiam repellendus
         perspiciatis incidunt at!
       </p>
-      <Link to="/home" className={style.link}>Ingresar</Link>
 
       </div>
+      <Link to="/home" className={style.link}>Ingresar</Link>
       </div>
     </div>
   );

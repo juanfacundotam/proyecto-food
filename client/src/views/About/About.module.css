@@ -1,5 +1,5 @@
 .divAbout {
-  border: 1px solid green;
+  /* border: 1px solid green; */
   min-height: 100vh;
   width: 100%;
   display: flex;
@@ -11,7 +11,7 @@
   }
   
   .divContainer {
-    border: 1px solid green;
+    /* border: 1px solid green; */
     width: 1100px;
     height: 600px;
     display: flex;
@@ -43,7 +43,7 @@
       } 
   
   .divImage {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,7 +53,7 @@
   }
   
   .divText {
-    border: 1px solid yellow;
+    /* border: 1px solid yellow; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -106,7 +106,7 @@
   }
 
   .logo {
-    width: 500px;
+    width: 380px;
     /* mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.034), rgb(0, 0, 0)); */
     border-radius: 20px;
     z-index: 111;

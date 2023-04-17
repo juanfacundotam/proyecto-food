@@ -1,49 +1,97 @@
 .divLanding {
-  border: 1px solid green;
+  /* border: 1px solid green; */
   min-height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
-
+  margin: 0;
+  padding: 0;
 }
 
 .divContainer {
-  border: 1px solid green;
+  /* border: 1px solid green; */
   width: 1100px;
   height: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
-
+  position: relative;
   border-radius: 20px;
   color: white;
-
+  
 }
 
 .divImage {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: flex;
+
   justify-content: center;
   align-items: center;
   width: 500px;
   height: 500px;
-
+/* position: absolute;
+left: 150px;
+top:0px; */
 }
 
 .divText {
-  border: 1px solid yellow;
+  /* border: 1px solid yellow; */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 500px;
-  height: 500px;
-
+  width: fit-content;
+  height: fit-content;
+  /* background-color: rgba(240, 255, 255, 0.082);
+  backdrop-filter: blur(20px); */
+  border-radius: 20px;
+  padding: 30px;
+  /* position: absolute;
+  right: 230px;
+  top:190px; */
+  z-index: 222;
 }
 
+.divImage {
+  animation-name: fadeInRight;
+  animation-duration: 5s;
+  animation-fill-mode: none;
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    /* transform: translateY(-200px); */
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    /* transform: translateY(0); */
+    transform: scale(1);
+  }
+}
+
+.divText {
+  animation-name: fadeText;
+  animation-duration: 5s;
+  animation-fill-mode: none;
+}
+
+@keyframes fadeText {
+  0% {
+    opacity: 0;
+    /* transform: translateX(50px); */
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    /* transform: translateX(0); */
+    transform: scale(1);
+  }
+}
 
 /* .landingWall {
   background-image: url(../../assets/viewsWallPapers/fondo1.jpg),
@@ -102,8 +150,11 @@
 
 .logo {
   width: 500px;
+  height: 500px;
   mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.034), rgb(0, 0, 0));
-  border-radius: 20px;
+  border-radius: 50%;
+  /* border-radius: 20px; */
+
 
 }
 
@@ -118,6 +169,7 @@
 .link {
   z-index: 999;
   background-color: rgb(39, 40, 41);
+  width: 70px;
   color: white;
   text-decoration: none;
   border: 1px solid white;
@@ -126,4 +178,61 @@
   padding: 10px 20px;
   margin-top: 30px;
 cursor: pointer;
+position: absolute;
+right:240px ;
+bottom: 100px;
+}
+.link:hover {
+color: aquamarine;
+
+}
+
+.link {
+  animation-name: fadebtn;
+  animation-duration: 2s;
+
+  animation-fill-mode: none;
+}
+
+@keyframes fadebtn {
+  0% {
+    opacity: 0;
+
+    /* color: white; */
+    /* transform: scale(0.8); */
+  }
+
+  100% {
+    opacity: 1;
+    /* width: 70px; */
+    /* color: white; */
+    /* transform: scale(2); */
+  }
+}
+
+.link {
+  animation-name: widthbtn;
+  animation-duration: 0.5s;
+  animation-delay: 3s;
+  animation-fill-mode: none;
+}
+
+@keyframes widthbtn {
+  0% {
+    /* opacity: 0; */
+    width: 70px;
+    /* color: white; */
+    /* transform: scale(0.8); */
+  }
+  50% {
+    width: 120px;
+    right:215px ;
+    /* color: aquamarine; */
+  }
+  100% {
+    /* opacity: 1; */
+    width: 70px;
+    /* color: white; */
+    /* transform: scale(2); */
+  }
 }

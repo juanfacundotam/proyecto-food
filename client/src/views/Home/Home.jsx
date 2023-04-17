@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <div className={style.divHome}>
       <div className={style.homeWall}></div>
-      <h1 className={style.titleHome}>Home</h1>
+
       <CardsContainer />
     </div>
   );
