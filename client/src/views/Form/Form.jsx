@@ -1,48 +1,148 @@
+import axios from "axios";
 import style from "./Form.module.css";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { getAllDiets } from "../../redux/actions";
+import { useDispatch } from "react-redux";
 const Form = () => {
   const [recipe, setRecipe] = useState({
     title: "",
     healthscore: "",
     summary: "",
-    instructions: "",
+    instructions: { 1: ""},
     image: "",
-    diets: "",
+    diets: [],
   });
   const [errors, setErrors] = useState({
     title: "",
     healthscore: "",
     summary: "",
-    instructions: "",
+    instructions: { 1: "asdasdasd", 2: "poner albaca", 3: "poner salsa" },
     image: "",
-    diets: "",
+    diets: [1],
   });
+  let [count, setCount] = useState(1);
+  //useEffect y traer las dietas de redux
+  // guardar las dietas en el redux al entrar en Home, dispatch getDiets con axios al server ###########
+  //crear en el estado inicial una propiedad diets
 
-  const validation = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllDiets());
+  }, [dispatch]);
 
-  };
-  
+  const allDiets = useSelector((state) => state.diets);
+
+  const validation = () => {};
+
   const handleInputChange = (event) => {
     const property = event.target.name;
     const value = event.target.value;
-
-    setRecipe({ ...recipe, [property]: value });
-   //  setErrors(validation({ ...recipe, [property]: value }));
+    if(property === "healthscore"){
+      setRecipe({ ...recipe, [property]: Number(value)});
+    }else {
+      setRecipe({ ...recipe, [property]: (value)});
+    }
+    //  setErrors(validation({ ...recipe, [property]: value }));
   };
 
-  const handleSubmit = (event) => {
-   event.preventDefault();
-   console.log("al tocar el boton de submit")
+  const handleInstructionsChange = (event) => {
+    const property = event.target.name;
+    const value = event.target.value;
+    setRecipe({...recipe, instructions: {...recipe.instructions, [property]: value}});
   }
 
+
+  const addInstructionHandler = (event) => {
+    event.preventDefault();
+    if(count < 10){
+      setCount(++count);
+      setRecipe({ ...recipe, ...(recipe.instructions[count] = "") });
+      console.log(recipe.instructions);
+    }
+  };
+  const delInstructionHandler = (event) => {
+    event.preventDefault();
+    if (count !== 1) {
+      setRecipe({ ...recipe, ...delete recipe.instructions[count] });
+      setCount(--count);
+    }
+    console.log(recipe.instructions);
+  };
+
+
+  const dietHandler = (event) => {
+    const name = event.target.name;
+    const checked = event.target.checked;
+    const newDiets = checked
+      ? [...recipe.diets, name]
+      : recipe.diets.filter((diet) => diet !== name); 
+    setRecipe({ ...recipe, diets: newDiets });
+  };
+
+  const printInstruction = () => {
+    const arrayInstructions = Object.entries(recipe.instructions);
+    const newInstructions = arrayInstructions.map((elem) => {
+      return (
+        <div className={style.divItemInstructions}>
+          <label htmlFor="numeber">{elem[0]}</label>
+          <textarea
+            className={style.instructionText}
+            // className={errors.instructions ? style.error : style.success}
+            type="text"
+            name={elem[0]}
+            value={recipe.instructions[elem[0]]}
+            onChange={handleInstructionsChange}
+          />
+        </div>
+      );
+    });
+    return newInstructions;
+  };
+
+  const printCheckDiet = () => {
+    const printDiets = allDiets.map((elem) => {
+      return (
+        <div className={style.divItemDiet}>
+          <label className={style.labelDiet}>
+            {elem}
+          </label>
+            <input
+              type="checkbox"
+              name={elem}
+              value={elem}
+              className={style.dietInput}
+              onClick={dietHandler}
+            />
+        </div>
+      );
+    });
+    return printDiets;
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(recipe)
+    axios.post("http://localhost:3001/recipes", recipe);
+    setRecipe({
+      title: "",
+      healthscore: "",
+      summary: "",
+      instructions: { 1: ""},
+      image: "",
+      diets: [],
+    });
+  };
+
   return (
-    <div className={style.divForm} onSubmit={handleSubmit}>
+    <div className={style.divForm}>
       <div className={style.formWall}></div>
 
       <form onSubmit={handleSubmit} className={style.form}>
         <div className={style.divInputs}>
-          <label htmlFor="title" className={style.formLabel}>Title:</label>
+          <label htmlFor="title" className={style.formLabel}>
+            Title:
+          </label>
           <input
             className={errors.title ? style.error : style.success}
             type="text"
@@ -52,17 +152,25 @@ const Form = () => {
           />
         </div>
         <div className={style.divInputs}>
-          <label htmlFor="healthscore" className={style.formLabel}>Health-Score:</label>
+          <div className={style.divHealth}>
+
+          <label htmlFor="healthscore" className={style.formLabel}>
+            Health-Score (0-100)
+          </label>
           <input
-            className={errors.healthscore ? style.error : style.success}
-            type="text"
+            className={style.healthInput}
+            // className={errors.healthscore ? style.error : style.success}
+            type="number"
             name="healthscore"
             value={recipe.healthscore}
             onChange={handleInputChange}
           />
+          </div>
         </div>
         <div className={style.divInputs}>
-          <label htmlFor="image" className={style.formLabel}>URL-image:</label>
+          <label htmlFor="image" className={style.formLabel}>
+            URL-image:
+          </label>
           <input
             className={errors.image ? style.error : style.success}
             type="text"
@@ -72,9 +180,11 @@ const Form = () => {
           />
         </div>
         <div className={style.divTextArea}>
-          <label htmlFor="summary" className={style.formLabel}>Summary:</label>
+          <label htmlFor="summary" className={style.formLabel}>
+            Summary:
+          </label>
           <textarea
-            className={errors.summary ? style.error : style.success}
+            className={errors.summary ? style.summaryError : style.summarySuccess}
             type="text"
             name="summary"
             value={recipe.summary}
@@ -82,88 +192,35 @@ const Form = () => {
           />
         </div>
         <div className={style.divTextArea}>
-          <label htmlFor="instructions" className={style.formLabel}>Instructions:</label>
-          <textarea
-            className={errors.instructions ? style.error : style.success}
-            type="text"
-            name="instructions"
-            value={recipe.instructions}
-            onChange={handleInputChange}
-          />
+          <div className={style.divLabelInstructions}>
+            <label htmlFor="instructions" className={style.formLabel}>
+              Instructions:
+            </label>
+            <button className={style.btnAdd} onClick={addInstructionHandler}>
+              +
+            </button>
+            <button className={style.btnDel} onClick={delInstructionHandler}>
+              -
+            </button>
+          </div>
+
+          {printInstruction()}
         </div>
-        <div className={style.divInputs}>
-          <label htmlFor="diets" className={style.formLabel}>Diets:</label>
-          <input
-            className={errors.diets ? style.error : style.success}
-            type="text"
-            name="diets"
-            value={recipe.diets}
-            onChange={handleInputChange}
-          />
+
+        <div className={style.divDiets}>
+          <label htmlFor="diets" className={style.formLabel}>
+            Diets:
+          </label>
+
+          {printCheckDiet()}
         </div>
-        <button className={style.btnSubmit} type="submit">Create</button>
+
+        <button className={style.btnSubmit} type="submit">
+          Create
+        </button>
       </form>
     </div>
   );
 };
 
 export default Form;
-
-// const dispatch = useDispatch();
-// const [userData, setUserData] = React.useState({
-//     username:'',
-//     password:''
-// });
-// const [errors, setErrors] = React.useState({
-//     username: '',
-//     password:''
-// });
-
-// useEffect(()=>{
-//     dispatch(resetFavorites);
-// },[])
-
-// const handleInputChange = (event) => {
-//     const property = event.target.name;
-//     const value = event.target.value
-
-//     setUserData({...userData, [property]: value});
-
-//     setErrors(
-//         validation({...userData, [property]: value})
-//     )
-
-//     // validation ({...userData, [property]: value}, errors, setErrors);
-// };
-
-// const handleSubmit = (event) => {
-//     event.preventDefault();
-//     props.login(userData);
-// }
-
-// return (
-//     <motion.div initial={{opacity: 0}}
-//     animate={{y: "30px", opacity:1}}
-//     transition={{duration:0.8}}>
-
-//     <form className={style.form}  onSubmit={handleSubmit}>
-//         <p style={{color: "yellow", fontSize: "15px", textAlign: "center"}}>Crea un usuario falso para probar la App</p>
-//         <h1>Rick and Morty App</h1>
-//         <div className={style.divUser}>
-//         <label htmlFor="username">UserName</label>
-//         <input className={errors.username ? style.error : style.success } type="text" name="username" value={userData.username} onChange={handleInputChange}/>
-//         </div>
-//         <div className={style.divPass}>
-//         <label htmlFor="password">Password</label>
-//         <input className={errors.password ? style.error : style.success } type="password" name="password" value={userData.password} onChange={handleInputChange}/>
-
-//         </div>
-//         <button className={style.button} type="submit">Login</button>
-//         <Link to={"/register"} className={style.linkBtn}>
-//         Register Now
-//         </Link>
-//     </form>
-//     <div  className={ errors.username === '' && errors.password === '' ? style.divErroresVacio : style.divErrores }>
-//         <p>{errors.username && errors.username}</p>
-//         <p>{errors.password && errors.password}</p>
-//     </div>

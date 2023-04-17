@@ -2,6 +2,7 @@ import axios from "axios";
 export const GET_RECIPES = "GET_RECIPES";
 export const GET_RECIPES_DETAIL = "GET_RECIPES_DETAIL"
 export const CLEAN_DETAIL ="CLEAN_DETAIL"
+export const GET_ALL_DIETS = "GET_ALL_DIETS"
 
 
 export const getRecipes = () => {
@@ -26,4 +27,12 @@ export const getRecipesDetail = (id) => {
 
 export const cleanDetail = () => {
     return {type: CLEAN_DETAIL};
+}
+
+export const getAllDiets = () => {
+    return async (dispatch) => {
+        const response = await axios.get(`http://localhost:3001/diets`);
+        const allDiets = response.data;
+        dispatch({type: GET_ALL_DIETS, payload: allDiets})
+    }
 }
