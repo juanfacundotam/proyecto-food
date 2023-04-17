@@ -141,13 +141,25 @@ const Form = () => {
       <form onSubmit={handleSubmit} className={style.form}>
         <div className={style.divInputs}>
           <label htmlFor="title" className={style.formLabel}>
-            Title:
+            Title
           </label>
           <input
             className={errors.title ? style.error : style.success}
             type="text"
             name="title"
             value={recipe.title}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className={style.divInputs}>
+          <label htmlFor="image" className={style.formLabel}>
+            URL-image
+          </label>
+          <input
+            className={errors.image ? style.error : style.success}
+            type="text"
+            name="image"
+            value={recipe.image}
             onChange={handleInputChange}
           />
         </div>
@@ -167,21 +179,9 @@ const Form = () => {
           />
           </div>
         </div>
-        <div className={style.divInputs}>
-          <label htmlFor="image" className={style.formLabel}>
-            URL-image:
-          </label>
-          <input
-            className={errors.image ? style.error : style.success}
-            type="text"
-            name="image"
-            value={recipe.image}
-            onChange={handleInputChange}
-          />
-        </div>
         <div className={style.divTextArea}>
           <label htmlFor="summary" className={style.formLabel}>
-            Summary:
+            Summary
           </label>
           <textarea
             className={errors.summary ? style.summaryError : style.summarySuccess}
@@ -194,7 +194,7 @@ const Form = () => {
         <div className={style.divTextArea}>
           <div className={style.divLabelInstructions}>
             <label htmlFor="instructions" className={style.formLabel}>
-              Instructions:
+              Instructions
             </label>
             <button className={style.btnAdd} onClick={addInstructionHandler}>
               +
@@ -209,7 +209,7 @@ const Form = () => {
 
         <div className={style.divDiets}>
           <label htmlFor="diets" className={style.formLabel}>
-            Diets:
+            Diets
           </label>
 
           {printCheckDiet()}

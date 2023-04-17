@@ -19,7 +19,7 @@
   flex-direction: row;
 
   border-radius: 20px;
-
+  color: white;
 
 }
 
@@ -117,7 +117,7 @@
 
 .link {
   z-index: 999;
-  background-color: aliceblue;
+  background-color: rgb(39, 40, 41);
   color: white;
   text-decoration: none;
   border: 1px solid white;

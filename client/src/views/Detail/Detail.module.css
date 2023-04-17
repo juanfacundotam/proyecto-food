@@ -5,7 +5,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
   z-index: 0;
 }
 .divDetail {
@@ -35,6 +34,7 @@
 .divDetail .title {
   border: 3px solid crimson;
   margin: 0;
+  color: white;
   
 }
 .divDetail .id {

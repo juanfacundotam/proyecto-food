@@ -1,5 +1,5 @@
 .divCardsContainer {
-    border: 1px solid yellow;
+    /* border: 1px solid yellow; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,8 +8,8 @@
     backdrop-filter: blur(20px);
     background-color: rgba(255, 255, 255, 0.103);
     border-radius: 20px;
-
     margin-bottom: 150px;
+    padding: 30px 0;
 }
 
 

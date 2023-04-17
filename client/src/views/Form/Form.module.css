@@ -57,8 +57,8 @@
 
 
 .form {
-  border: 1px solid green;
-  background-color: #0000009d;
+  /* border: 1px solid green; */
+  background-color: rgba(255, 255, 255, 0.062);
   width: fit-content;
   height: fit-content;
   border-radius: 20px;
@@ -68,6 +68,16 @@
   flex-direction: column;
   color: white;
   margin: 150px 0;
+  backdrop-filter: blur(20px);
+  padding: 15px;
+  z-index: 111;
+}
+.form label {
+  resize: none;
+  text-align: start;
+  /* border: 1px solid green; */
+  font-size: 25px;
+  margin: 10px 0;
   z-index: 111;
 }
 .form .divInputs {
@@ -77,50 +87,48 @@
   flex-direction: column;
   width: 500px;
   margin: 20px;
-  border: 1px solid rgb(255, 187, 0);
+  background-color: #0c0c0c8c;
+  padding: 15px 20px;
+    border-radius: 15px;
+  /* border: 1px solid rgb(255, 187, 0); */
+
 }
+
 .form .divTextArea {
   display: flex;
   align-items: start;
   justify-content: center;
   flex-direction: column;
   margin: 20px;
-  border: 1px solid red;
-  backdrop-filter: blur(20px);
+  background-color: #0c0c0c8c;
+  padding: 15px 20px;
+    border-radius: 15px;
+  /* border: 1px solid red; */
+  /* backdrop-filter: blur(20px); */
   /* background-color: rgba(255, 255, 255, 0.082); */
   resize: none;
   width: 500px;
   text-align: start;
-
-
-
+  
+  
   font-size: 17px;
   z-index: 111;
 }
-
-.form label {
-  resize: none;
-  text-align: start;
-  border: 1px solid green;
-  font-size: 25px;
-  margin: 10px 0;
-  z-index: 111;
-}
 .form textarea {
+  background-color: #0c0c0c8c;
   resize: none;
   width: 100%;
   text-align: start;
-  border: 1px solid green;
-
-  background-color: #00000000;
+  /* border: 1px solid green; */
+  border: 1px solid white;
   font-size: 17px;
   z-index: 111;
 }
 .form .summarySuccess {
-
+  
 }
 .form .summaryError {
-
+  
 }
 
 
@@ -129,12 +137,12 @@
   z-index: 222;
   width: 100%;
   height: 25px;
-  color: aquamarine;
+  color: rgb(252, 252, 252);
   font-size: 18px;
   /* backdrop-filter: blur(20px); */
   border-radius: 10px;
-  z-index: 111;
-  background-color: rgba(16, 210, 224, 0.11);
+    border: 1px solid white;
+  background-color: #0c0c0c8c;
 }
 
 .form .divHealth {
@@ -143,11 +151,12 @@
   align-items: center;
 }
 .form .healthInput {
-  width: 10%;
+  width: 12%;
   margin-top: 5px;
-  margin-left: 10px;
+  margin-left: 18px;
   backdrop-filter: blur(20px);
-  background-color: rgba(238, 24, 131, 0.486);
+  background-color: #0c0c0c8c;
+  border: 1px solid white;
 }
 
 .btnSubmit {
@@ -180,7 +189,7 @@
 }
 
 .divLabelInstructions {
-  border: 3px solid yellow;
+  /* border: 3px solid yellow; */
   display: flex;
   width: 100%;
 }
@@ -189,7 +198,7 @@
 }
 
 .divItemInstructions {
-  border: 3px solid rebeccapurple;
+  /* border: 3px solid rebeccapurple; */
   display: flex;
   align-items: start;
   justify-content: center;
@@ -198,12 +207,12 @@
   margin: 10px 0;
 }
 .divItemInstructions label {
-  border: 3px solid rebeccapurple;
+  /* border: 3px solid rebeccapurple; */
   padding: 0 10px;
   margin: 0;
 }
 .divItemInstructions label {
-  border: 3px solid rebeccapurple;
+  /* border: 3px solid rebeccapurple; */
   padding: 0 10px;
   margin: 0;
 }
@@ -218,24 +227,30 @@
   align-items: start;
   justify-content: center;
   flex-direction: column;
-  border: 2px solid orange;
+  padding: 15px;
+  /* border: 2px solid orange; */
+  border-radius: 15px;
   width: 80%;
+  background-color: #0c0c0c8c;
+  z-index: 111;
 }
 .divItemDiet {
+  /* border: 1px solid rgb(0, 110, 255); */
 width: 100%;
-border: 1px solid fuchsia;
 display: flex;
 align-items: center;
 justify-content: end;
 
 }
-.labelDiet{
-
-font-size: 18px;
+.form .labelDiet{
+margin: 8px;
+font-size: 15px;
 }
 .form .dietInput{
-  width: 40%;
+  width: 15%;
   padding: 0;
+  margin-right: 25%;
   backdrop-filter: blur(0px);
-  background-color: transparent
+  background-color: transparent;
+  border-radius: 10px;
 }
