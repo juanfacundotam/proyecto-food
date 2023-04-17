@@ -11,10 +11,12 @@
 height: fit-content;
     border-radius: 15px;
     overflow: hidden;
-    margin: 20px;
+    margin: 30px  20px;
+    /* background-color: rgba(0, 0, 0, 0.459);
+    backdrop-filter: blur(20px); */
 }
 .divText{
-
+    
     /* border: 3px solid yellow; */
     display: flex;
     flex-direction: column;
