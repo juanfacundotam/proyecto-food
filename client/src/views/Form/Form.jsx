@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getAllDiets } from "../../redux/actions";
 import { useDispatch } from "react-redux";
-import { useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 const Form = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [recipe, setRecipe] = useState({
     title: "",
     healthscore: "",
@@ -30,12 +30,10 @@ const Form = () => {
   const allDiets = useSelector((state) => state.diets);
   const dispatch = useDispatch();
   useEffect(() => {
-    if(!allDiets.length){
-      console.log("paso por el diets")
+    if (!allDiets.length) {
       dispatch(getAllDiets());
     }
   }, [dispatch]);
-
 
   const validation = () => {};
 
@@ -64,7 +62,6 @@ const Form = () => {
     if (count < 10) {
       setCount(++count);
       setRecipe({ ...recipe, ...(recipe.instructions[count] = "") });
-
     }
   };
   const delInstructionHandler = (event) => {
@@ -73,7 +70,6 @@ const Form = () => {
       setRecipe({ ...recipe, ...delete recipe.instructions[count] });
       setCount(--count);
     }
-
   };
 
   const dietHandler = (event) => {
@@ -109,7 +105,6 @@ const Form = () => {
     const printDiets = allDiets.map((elem) => {
       return (
         <div className={style.divItemDiet}>
-          {console.log(elem)}
           <label className={style.labelDiet}>{elem.name}</label>
           <input
             type="checkbox"
@@ -126,26 +121,24 @@ const Form = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(recipe);
     axios.post("http://localhost:3001/recipes", recipe);
-    // setRecipe({
-    //   title: "",
-    //   healthscore: "",
-    //   summary: "",
-    //   instructions: { 1: "" },
-    //   image: "",
-    //   diets: [],
-    // });
-    // alert("Receta creada correctamente")
-    // navigate("/home");
-
+    setRecipe({
+      title: "",
+      healthscore: "",
+      summary: "",
+      instructions: { 1: "" },
+      image: "",
+      diets: [],
+    });
+    alert("Receta creada correctamente");
+    navigate("/home");
   };
 
   return (
     <div className={style.divForm}>
       {allDiets.length ? (
         <>
-        <div className={style.formWall}></div>
+          <div className={style.formWall}></div>
           <form onSubmit={handleSubmit} className={style.form}>
             <div className={style.divInputs}>
               <label htmlFor="title" className={style.formLabel}>
@@ -236,7 +229,7 @@ const Form = () => {
           </form>
         </>
       ) : (
-        <div class="custom-loader">loading</div>
+        <div className={style.customLoader}></div>
       )}
     </div>
   );

@@ -10,7 +10,6 @@ export const getRecipes = () => {
 
         const response = await axios.get("http://localhost:3001/recipes")
         const recipes = response.data;
-        console.log(recipes)
         dispatch({type: GET_RECIPES, payload: recipes})
     }
 }
@@ -20,7 +19,6 @@ export const getRecipesDetail = (id) => {
         // const response = await axios.get(`http://localhost:3001/recipes/782585`)
         const response = await axios.get(`http://localhost:3001/recipes/${id}`)
         const recipe = response.data;
-        console.log(recipe)
         dispatch({type: GET_RECIPES_DETAIL, payload: recipe})
     }
 }

@@ -5,9 +5,6 @@ import { useSelector } from "react-redux";
 const CardsContainer = () => {
   const recipes = useSelector(state => state.recipes)
   
-  console.log(recipes)
-  
-
   return (
     <div className={style.divCardsContainer}>
       {recipes?.map(({ id, title, image,healthScore, summary, instructions, diets }) => {

@@ -26,7 +26,7 @@ const About = () => {
           </div>
         </>
       ) : (
-        <div class="custom-loader">loading</div>
+        <div className={style.customLoader}></div>
       )}
     </div>
   );

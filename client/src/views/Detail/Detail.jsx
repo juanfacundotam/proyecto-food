@@ -17,8 +17,24 @@ const Detail = () => {
       dispatch(cleanDetail());
     };
   }, []);
+  
 
-  console.log(title);
+  const getInstructions = () => {
+    console.log(typeof instructions === "object")
+    if(typeof instructions === "object"){
+      const arrayInstructions = Object.entries(instructions);
+      const results = arrayInstructions.map(elem => {
+
+        return (<p className={style.instruction}>{`${elem[0]} -> ${elem[1]}`}</p>)
+      })
+
+      return results;
+    }
+
+    return <div dangerouslySetInnerHTML={{ __html: instructions }} />
+  }
+
+
   if (
     !id ||
     !title ||
@@ -28,7 +44,7 @@ const Detail = () => {
     // !instructions ||
     // !diets
   ) {
-    return <div className={style.loading}>Loading...</div>;
+    return <div className={style.customLoader}></div>;
   }
 
   return (
@@ -41,8 +57,9 @@ const Detail = () => {
             <h1 className={style.title}>{title}</h1>
 
             <p className={style.healthscore}>health score: {healthscore}</p>
-            <p className={style.summary}>{summary}</p>
-            <p className={style.instruction}>{instructions}</p>
+            <div dangerouslySetInnerHTML={{ __html: summary }} />
+
+            {getInstructions()}
             {diets?.map((diet) => {
               return <p className={style.diet}>{diet}</p>;
             })}
