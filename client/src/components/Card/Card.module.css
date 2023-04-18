@@ -12,6 +12,7 @@ height: fit-content;
     border-radius: 15px;
     overflow: hidden;
     margin: 30px  20px;
+
     /* background-color: rgba(0, 0, 0, 0.459);
     backdrop-filter: blur(20px); */
 }
@@ -34,9 +35,10 @@ height: fit-content;
     font-size: 25px;
     text-align: center;
     color: aqua;
-    z-index: 333;
+    z-index: 999;
     margin: 15px 0;
     font-size: 20px;
+    cursor: pointer;
 }
 .image {
  /* position: absolute; */

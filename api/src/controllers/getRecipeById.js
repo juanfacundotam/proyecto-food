@@ -16,6 +16,7 @@ const getRecipeById = async (idRecipe) => {
           },
         },
       });
+      
       if (resBdd) return resBdd;
       else throw Error("Receta no encontrada BDD")
     }

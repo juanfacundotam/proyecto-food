@@ -2,6 +2,7 @@ import style from "./Card.module.css";
 import { Link } from "react-router-dom";
 
 const Card = ({ id, title, image, diets }) => {
+  let count = 0
   return (
     <div className={style.divCard}>
       <img src={image} alt="Image Recipe" className={style.image} />
@@ -10,8 +11,9 @@ const Card = ({ id, title, image, diets }) => {
           {title}
         </Link>
         <div className={style.divDiets}>
+          
           {diets?.map((diet) => {
-            return <p className={style.diet}>&lt;{diet}&gt;</p>;
+            return <p key={++count} className={style.diet}>&lt;{diet}&gt;</p>;
           })}
         </div>
 

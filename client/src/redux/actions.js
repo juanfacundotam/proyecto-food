@@ -10,7 +10,7 @@ export const getRecipes = () => {
 
         const response = await axios.get("http://localhost:3001/recipes")
         const recipes = response.data;
-
+        console.log(recipes)
         dispatch({type: GET_RECIPES, payload: recipes})
     }
 }

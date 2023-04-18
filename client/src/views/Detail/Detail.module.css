@@ -15,7 +15,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
+  color: white;
   z-index: 111;
 }
 
@@ -67,3 +67,22 @@
   border: 3px solid crimson;
 width: 20%;
 }
+
+
+.divDetail {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  }
+  @-webkit-keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+  }
+  @keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+  } 

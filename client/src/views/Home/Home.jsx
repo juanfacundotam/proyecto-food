@@ -1,26 +1,31 @@
 import CardsContainer from "../../components/CardsContainer/CardsContainer";
 import style from "./Home.module.css";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getRecipes, getAllDiets } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { getRecipes} from "../../redux/actions";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const recipes = useSelector(state => state.recipes)
 
   useEffect(() => {
-    dispatch(getRecipes())
-        return () => {
-      dispatch(getAllDiets());
-    }
+    dispatch(getRecipes());
   }, [dispatch]);
+
 
   return (
     <div className={style.divHome}>
-      <div className={style.homeWall}></div>
-
-      <CardsContainer />
+      {recipes.length ? (
+        <>
+        <div className={style.homeWall}></div>
+          <CardsContainer />
+        </>
+      ) : (
+        <div class="custom-loader">loading</div>
+      )}
     </div>
   );
 };
 
 export default Home;
+
