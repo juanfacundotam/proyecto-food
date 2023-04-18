@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getAllDiets } from "../../redux/actions";
 import { useDispatch } from "react-redux";
+import { useNavigate} from "react-router-dom"
 const Form = () => {
+  const navigate = useNavigate()
   const [recipe, setRecipe] = useState({
     title: "",
     healthscore: "",
@@ -25,13 +27,15 @@ const Form = () => {
   //useEffect y traer las dietas de redux
   // guardar las dietas en el redux al entrar en Home, dispatch getDiets con axios al server ###########
   //crear en el estado inicial una propiedad diets
-
+  const allDiets = useSelector((state) => state.diets);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllDiets());
+    if(!allDiets.length){
+      console.log("paso por el diets")
+      dispatch(getAllDiets());
+    }
   }, [dispatch]);
 
-  const allDiets = useSelector((state) => state.diets);
 
   const validation = () => {};
 
@@ -60,7 +64,7 @@ const Form = () => {
     if (count < 10) {
       setCount(++count);
       setRecipe({ ...recipe, ...(recipe.instructions[count] = "") });
-      console.log(recipe.instructions);
+
     }
   };
   const delInstructionHandler = (event) => {
@@ -69,7 +73,7 @@ const Form = () => {
       setRecipe({ ...recipe, ...delete recipe.instructions[count] });
       setCount(--count);
     }
-    console.log(recipe.instructions);
+
   };
 
   const dietHandler = (event) => {
@@ -105,11 +109,12 @@ const Form = () => {
     const printDiets = allDiets.map((elem) => {
       return (
         <div className={style.divItemDiet}>
-          <label className={style.labelDiet}>{elem}</label>
+          {console.log(elem)}
+          <label className={style.labelDiet}>{elem.name}</label>
           <input
             type="checkbox"
-            name={elem}
-            value={elem}
+            name={elem.name}
+            value={elem.name}
             className={style.dietInput}
             onClick={dietHandler}
           />
@@ -123,14 +128,17 @@ const Form = () => {
     event.preventDefault();
     console.log(recipe);
     axios.post("http://localhost:3001/recipes", recipe);
-    setRecipe({
-      title: "",
-      healthscore: "",
-      summary: "",
-      instructions: { 1: "" },
-      image: "",
-      diets: [],
-    });
+    // setRecipe({
+    //   title: "",
+    //   healthscore: "",
+    //   summary: "",
+    //   instructions: { 1: "" },
+    //   image: "",
+    //   diets: [],
+    // });
+    // alert("Receta creada correctamente")
+    // navigate("/home");
+
   };
 
   return (
