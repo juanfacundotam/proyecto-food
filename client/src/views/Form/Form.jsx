@@ -24,13 +24,15 @@ const Form = () => {
     title: "",
     healthscore: "",
     summary: "",
-    instructions: { 1: ""},
+    instructions: "",
     image: "",
-    diets: [1],
+    diets: [],
   });
 
   const dispatch = useDispatch();
+  
   useEffect(() => {
+    
     if (!allDiets.length) {
       dispatch(getAllDiets());
     }
@@ -45,16 +47,24 @@ const Form = () => {
     } else {
       setRecipe({ ...recipe, [property]: value });
     }
+    const recipeCompleted = { ...recipe, [property]: value };
+    console.log(recipeCompleted);
     setErrors(validation({ ...recipe, [property]: value }));
   };
 
   const handleInstructionsChange = (event) => {
     const property = event.target.name;
     const value = event.target.value;
-    setRecipe({
-      ...recipe,
-      instructions: { ...recipe.instructions, [property]: value },
-    });
+    // console.log(property)
+    const updatedInstructions = { ...recipe.instructions, [property]: value };
+    // console.log("Updated instructions:", updatedInstructions);
+    setRecipe({ ...recipe, instructions: updatedInstructions });
+    setErrors(validation({ ...recipe, instructions: updatedInstructions }));
+
+    // const recipeCompleted = { ...recipe, [property]: value}
+    // console.log(recipeCompleted)
+
+    // setErrors(validation({ ...recipe, ...(recipe.instructions[property] = value) }));
   };
 
   const handleAddInstruction = (event) => {
@@ -63,6 +73,7 @@ const Form = () => {
       setCount(++count);
       setRecipe({ ...recipe, ...(recipe.instructions[count] = "") });
     }
+    setErrors(validation({ ...recipe }));
   };
   const handleDelInstruction = (event) => {
     event.preventDefault();
@@ -70,6 +81,8 @@ const Form = () => {
       setRecipe({ ...recipe, ...delete recipe.instructions[count] });
       setCount(--count);
     }
+
+    setErrors(validation({ ...recipe }));
   };
 
   const dietHandler = (event) => {
@@ -83,16 +96,17 @@ const Form = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    axios.post("http://localhost:3001/recipes", recipe)
-    .then(response => {
-      // Si la respuesta es exitosa, redirige a otra página
-      alert("Receta creada correctamente");
-      navigate('/home');
-    })
-    .catch(error => {
-      // Si hay un error, muestra un mensaje de error
-      alert("La receta no pudo crearse", error);
-    });
+    axios
+      .post("http://localhost:3001/recipes", recipe)
+      .then((response) => {
+        // Si la respuesta es exitosa, redirige a otra página
+        alert("Receta creada correctamente");
+        navigate("/home");
+      })
+      .catch((error) => {
+        // Si hay un error, muestra un mensaje de error
+        alert("La receta no pudo crearse", error);
+      });
     setRecipe({
       title: "",
       healthscore: "",
@@ -104,6 +118,19 @@ const Form = () => {
   };
 
   //PRINT HTML INSTRUCTIONS AND DIETS **************************************
+  // let isInstructionsComplete = Object.values(errors.instructions)
+  // .every((instruction) => instruction !== "");
+
+  // if (errors.instructions[0] === undefined) {
+  //   console.log(errors.instructions[0]);
+
+  // } else {
+  //   console.log("La prop tiene algo");
+
+  // }
+  // console.log(isInstructionsComplete)
+  // console.log(errors.healthscore)
+
   const printInstruction = () => {
     const arrayInstructions = Object.entries(recipe.instructions);
     const newInstructions = arrayInstructions.map((elem) => {
@@ -111,11 +138,13 @@ const Form = () => {
         <div className={style.divItemInstructions}>
           <label htmlFor="numeber">{elem[0]}</label>
           <textarea
-            className={style.instructionText}
-            // className={errors.instructions ? style.error : style.success}
+            // className={`${style.instructionText} ${isInstructionsComplete[0] ? style.textAreaSuccess : style.textAreaError }`}
+            className={
+              errors.instructions !== "" && errors.instructions === undefined ? style.textAreaSuccess : style.textAreaError
+            }
             type="text"
             name={elem[0]}
-            value={recipe.instructions[elem[0]]}
+            value={recipe.instructions[elem[1]]}
             onChange={handleInstructionsChange}
           />
         </div>
@@ -153,8 +182,9 @@ const Form = () => {
               <label htmlFor="title" className={style.formLabel}>
                 Title
               </label>
+
               <input
-                className={errors.title ? style.error : style.success}
+                className={errors.title !== "" && errors.title === undefined? style.success : style.error}
                 type="text"
                 name="title"
                 value={recipe.title}
@@ -166,7 +196,7 @@ const Form = () => {
                 URL-image
               </label>
               <input
-                className={errors.image ? style.error : style.success}
+                className={errors.image !== "" && errors.image === undefined? style.success : style.error}
                 type="text"
                 name="image"
                 value={recipe.image}
@@ -176,10 +206,10 @@ const Form = () => {
             <div className={style.divInputs}>
               <div className={style.divHealth}>
                 <label htmlFor="healthscore" className={style.formLabel}>
-                  Health-Score (0-100)
+                  Health-Score (1-100)
                 </label>
                 <input
-                  className={style.healthInput}
+                  className={errors.healthscore !== "" && errors.healthscore === undefined? style.successHealth : style.errorHealth}
                   // className={errors.healthscore ? style.error : style.success}
                   type="number"
                   name="healthscore"
@@ -194,7 +224,7 @@ const Form = () => {
               </label>
               <textarea
                 className={
-                  errors.summary ? style.summaryError : style.summarySuccess
+                  errors.summary !== "" && errors.summary === undefined ? style.textAreaSuccess : style.textAreaError
                 }
                 type="text"
                 name="summary"
@@ -229,25 +259,51 @@ const Form = () => {
             <button
               className={style.btnSubmit}
               type="submit"
-              // disabled={errors.title || errors.healthscore || errors.summary || errors.image }
+              disabled={
+                errors.title ||
+                errors.healthscore ||
+                errors.summary ||
+                errors.image
+              }
+            >Create</button>
+            <div
+              className={
+                errors.title === undefined &&
+                errors.healthscore === undefined &&
+                errors.summary === undefined &&
+                errors.image === undefined &&
+                errors.instructions === undefined
+                  ? style.divErroresVacio
+                  : style.divErrores
+              }
             >
-              Create
-            </button>
-            <div className={style.divErrors}>
+              {errors.title &&
+              <p className={style.errorsParagraph}>
+                {errors.title && errors.title}
+              </p>
+              }
+              {errors.healthscore &&
+              <p className={style.errorsParagraph}>
+                {console.log(errors.healthscore)}
+                {errors.healthscore && recipe.healthscore === 0 && errors.healthscore}
+              </p>
+              }
+              {errors.summary &&
+              <p className={style.errorsParagraph}>
+                {errors.summary && errors.summary}
+              </p>
+              }
+              {errors.instructions &&
+              <p className={style.errorsParagraph}>
+                {errors.instructions && errors.instructions}
+              </p>
+              }
+              {errors.image &&
+              <p className={style.errorsParagraph}>
+                {errors.image && errors.image}
+              </p>
+              }
 
-            <p className={style.errorsParagraph}>
-              {errors.title && errors.title}
-            </p>
-            <p className={style.errorsParagraph}>
-              {errors.healthscore && errors.healthscore}
-            </p>
-            <p className={style.errorsParagraph}>
-              {errors.summary && errors.summary}
-            </p>
-            <p className={style.errorsParagraph}>{errors.instructions && errors.instructions[1] === null}</p>
-            <p className={style.errorsParagraph}>
-              {errors.image && errors.image}
-            </p>
             </div>
           </form>
         </>
