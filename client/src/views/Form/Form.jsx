@@ -285,7 +285,7 @@ const Form = () => {
               {errors.healthscore &&
               <p className={style.errorsParagraph}>
                 {console.log(errors.healthscore)}
-                {errors.healthscore && recipe.healthscore === 0 && errors.healthscore}
+                {errors.healthscore && errors.healthscore}
               </p>
               }
               {errors.summary &&

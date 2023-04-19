@@ -3,8 +3,8 @@ const validation = (recipe) => {
 
   if(!recipe.title) errors.title = "> Title: No puede quedar vacío";
   else if (recipe.title.length > 90) errors.title = "> Title: Máximo 90 caracteres";
-  
-  if(!recipe.healthscore) errors.healthscore = "> Health Score: Ingresa un número (1-100)";
+  console.log(recipe.healthscore)
+  if(recipe.healthscore === '') errors.healthscore = "> Health Score: Ingresa un número (1-100)";
   else if(recipe.healthscore === "0") errors.healthscore = "> Health Score: Ingresa un número (1-100)";
   else if(recipe.healthscore > 100) errors.healthscore = "> Health Score: Ingresa un número (1-100)";
 
