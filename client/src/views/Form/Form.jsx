@@ -5,8 +5,13 @@ import { useSelector } from "react-redux";
 import { getAllDiets } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import validation from "./validation";
+
 const Form = () => {
   const navigate = useNavigate();
+  const allDiets = useSelector((state) => state.diets);
+  let [count, setCount] = useState(1);
+
   const [recipe, setRecipe] = useState({
     title: "",
     healthscore: "",
@@ -19,15 +24,11 @@ const Form = () => {
     title: "",
     healthscore: "",
     summary: "",
-    instructions: { 1: "asdasdasd", 2: "poner albaca", 3: "poner salsa" },
+    instructions: { 1: ""},
     image: "",
     diets: [1],
   });
-  let [count, setCount] = useState(1);
-  //useEffect y traer las dietas de redux
-  // guardar las dietas en el redux al entrar en Home, dispatch getDiets con axios al server ###########
-  //crear en el estado inicial una propiedad diets
-  const allDiets = useSelector((state) => state.diets);
+
   const dispatch = useDispatch();
   useEffect(() => {
     if (!allDiets.length) {
@@ -35,8 +36,7 @@ const Form = () => {
     }
   }, [dispatch]);
 
-  const validation = () => {};
-
+  //HANDLERS *********************************************************************************
   const handleInputChange = (event) => {
     const property = event.target.name;
     const value = event.target.value;
@@ -45,7 +45,7 @@ const Form = () => {
     } else {
       setRecipe({ ...recipe, [property]: value });
     }
-    //  setErrors(validation({ ...recipe, [property]: value }));
+    setErrors(validation({ ...recipe, [property]: value }));
   };
 
   const handleInstructionsChange = (event) => {
@@ -57,14 +57,14 @@ const Form = () => {
     });
   };
 
-  const addInstructionHandler = (event) => {
+  const handleAddInstruction = (event) => {
     event.preventDefault();
     if (count < 10) {
       setCount(++count);
       setRecipe({ ...recipe, ...(recipe.instructions[count] = "") });
     }
   };
-  const delInstructionHandler = (event) => {
+  const handleDelInstruction = (event) => {
     event.preventDefault();
     if (count !== 1) {
       setRecipe({ ...recipe, ...delete recipe.instructions[count] });
@@ -81,6 +81,29 @@ const Form = () => {
     setRecipe({ ...recipe, diets: newDiets });
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    axios.post("http://localhost:3001/recipes", recipe)
+    .then(response => {
+      // Si la respuesta es exitosa, redirige a otra página
+      alert("Receta creada correctamente");
+      navigate('/home');
+    })
+    .catch(error => {
+      // Si hay un error, muestra un mensaje de error
+      alert("La receta no pudo crearse", error);
+    });
+    setRecipe({
+      title: "",
+      healthscore: "",
+      summary: "",
+      instructions: { 1: "" },
+      image: "",
+      diets: [],
+    });
+  };
+
+  //PRINT HTML INSTRUCTIONS AND DIETS **************************************
   const printInstruction = () => {
     const arrayInstructions = Object.entries(recipe.instructions);
     const newInstructions = arrayInstructions.map((elem) => {
@@ -118,21 +141,7 @@ const Form = () => {
     });
     return printDiets;
   };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    axios.post("http://localhost:3001/recipes", recipe);
-    setRecipe({
-      title: "",
-      healthscore: "",
-      summary: "",
-      instructions: { 1: "" },
-      image: "",
-      diets: [],
-    });
-    alert("Receta creada correctamente");
-    navigate("/home");
-  };
+  //*************************************************************** */
 
   return (
     <div className={style.divForm}>
@@ -198,16 +207,10 @@ const Form = () => {
                 <label htmlFor="instructions" className={style.formLabel}>
                   Instructions
                 </label>
-                <button
-                  className={style.btnAdd}
-                  onClick={addInstructionHandler}
-                >
+                <button className={style.btnAdd} onClick={handleAddInstruction}>
                   +
                 </button>
-                <button
-                  className={style.btnDel}
-                  onClick={delInstructionHandler}
-                >
+                <button className={style.btnDel} onClick={handleDelInstruction}>
                   -
                 </button>
               </div>
@@ -223,9 +226,29 @@ const Form = () => {
               {printCheckDiet()}
             </div>
 
-            <button className={style.btnSubmit} type="submit">
+            <button
+              className={style.btnSubmit}
+              type="submit"
+              // disabled={errors.title || errors.healthscore || errors.summary || errors.image }
+            >
               Create
             </button>
+            <div className={style.divErrors}>
+
+            <p className={style.errorsParagraph}>
+              {errors.title && errors.title}
+            </p>
+            <p className={style.errorsParagraph}>
+              {errors.healthscore && errors.healthscore}
+            </p>
+            <p className={style.errorsParagraph}>
+              {errors.summary && errors.summary}
+            </p>
+            <p className={style.errorsParagraph}>{errors.instructions && errors.instructions[1] === null}</p>
+            <p className={style.errorsParagraph}>
+              {errors.image && errors.image}
+            </p>
+            </div>
           </form>
         </>
       ) : (

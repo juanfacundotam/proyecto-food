@@ -305,3 +305,32 @@ font-size: 15px;
 @keyframes h1{
   100% {transform:rotate(1turn)}
 }
+
+
+.divErrors {
+border: 1px solid green;
+background-color: #c0161073;
+backdrop-filter: blur(20px);
+border-radius: 15px;
+width: fit-content;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: start;
+padding: 5px;
+}
+
+.error{
+
+}
+.success {
+
+}
+
+.errorsParagraph {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  border: 1px solid yellow;
+  z-index:999;
+  margin: 5px 0 0 10px;
+}
