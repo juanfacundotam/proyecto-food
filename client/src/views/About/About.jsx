@@ -1,10 +1,22 @@
 import style from "./About.module.css";
-import foto from "../../assets/fotoCV.jpg";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+// import foto from "../../assets/fotoCV.jpg";
 
 const About = () => {
+  const [foto, setFoto] = useState(null);
+
+  useEffect(() => {
+    import("../../assets/fotoCV.jpg")
+      .then((fotoModule) => {
+        setFoto(fotoModule.default);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <div className={style.divAbout}>
+
       {foto ? (
         <>
           <div className={style.aboutWall}></div>
