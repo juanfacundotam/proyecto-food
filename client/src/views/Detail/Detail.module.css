@@ -144,15 +144,23 @@ border-radius: 15px;
 
 .button{
   position: absolute;
-  top:-50px;
-  left:10px;
-  width: 38px;
-  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.212);
+  top:15px;
+  right:15px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
-  background-color: rgba(17, 193, 199, 0.432);
-  border: none;
+  background-color: rgba(17, 199, 93, 0.247);
+  backdrop-filter: blur(20px);
+
   cursor: pointer;
-  font-size: 20px;
+  font-size: 22px;
+  padding: 0 0 2px 2px;
+  z-index: 222;
+  color: white;
+}
+.button:hover{
+  background-color: rgba(26, 184, 91, 0.767);
 }
 
 
@@ -221,7 +229,7 @@ border-radius: 15px;
 
 
   .detailWall {
-    background-image: url(../../assets/viewsWallPapers/fondo1.jpg),
+    background-image: url(../../assets/viewsWallPapers/fondo9.jpg),
       linear-gradient(100deg, #000000, #00000025);
     position: fixed;
     top: 0;

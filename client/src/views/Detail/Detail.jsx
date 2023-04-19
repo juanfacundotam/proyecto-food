@@ -61,7 +61,7 @@ const Detail = () => {
           <img src={image} alt="" className={style.image} />
           <div className={style.divTopRight}>
             <Link to={"/home"}>
-              <button className={style.button}>&lt;&lt;</button>
+              <button className={style.button}>x</button>
             </Link>
             <h1 className={style.title}>{title}</h1>
 

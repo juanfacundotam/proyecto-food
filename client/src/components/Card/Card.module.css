@@ -1,63 +1,54 @@
 .divCard {
-    position: relative;
-    border: 2px solid white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
-    flex-wrap: wrap;
-   width: 250px;
-   min-height: 375px;
-height: fit-content;
-    border-radius: 15px;
-    overflow: hidden;
-    margin: 30px  20px;
-
-    /* background-color: rgba(0, 0, 0, 0.459);
-    backdrop-filter: blur(20px); */
+  position: relative;
+  /* border: 2px solid rgba(255, 255, 255, 0.459); */
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  width: 200px;
+  min-height: 350px;
+  overflow: hidden;
+  flex-wrap: wrap;
+  height: fit-content;
+  border-radius: 15px;
+  margin: 30px 20px;
+  background-color: rgba(19, 19, 19, 0.712);
+backdrop-filter: blur(20px);
+  z-index: 111;
 }
-.divText{
-    
-    /* border: 3px solid yellow; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
-    width: 245px;
-
-    height: fit-content
-
-
+.divText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: fit-content;
+  z-index: 555;
 }
 
 .linkDetail {
-    text-decoration: none;
-    font-size: 25px;
-    text-align: center;
-    color: aqua;
-    z-index: 999;
-    margin: 15px 0;
-    font-size: 20px;
-    cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  color: rgb(63, 202, 126);
+  margin: 15px 0 8px 0;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 999;
 }
 .image {
- /* position: absolute; */
- top: 0;
- left: 0;
- width: 100%;
+  width: 100%;
+  height: 170px;
 }
 .divDiets {
-/* border: 1px solid gold; */
-display: flex;
-justify-content: center;
-align-items: center;
-flex-wrap: wrap;
-margin: 5px;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 0 10px 0;
 }
 .divDiets .diet {
-    /* border: 1px solid white; */
-    margin: 5px;
-    padding: 0px;
-    font-size: 15px;
+  margin: 1px 5px;
+  padding: 0px;
+  font-size: 12px;
+  color: rgb(8, 207, 214);
 }

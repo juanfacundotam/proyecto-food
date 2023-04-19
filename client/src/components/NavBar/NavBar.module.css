@@ -4,15 +4,15 @@
     align-items: center;
     justify-content: center;
 
-    height: 80px;
+    width: 30%;
+    height: 70px;
 
+    margin-top: 15px;
 
     backdrop-filter: blur(20px);
-    background-color: rgba(0, 0, 0, 0.507);
+    background-color: rgba(156, 151, 151, 0.014);
     border-radius: 20px;
-
     position: absolute;
-    width: 80%;
 
     z-index: 111;
 }
@@ -27,4 +27,28 @@
     margin: 0 20px;
     color: aquamarine;
     text-decoration: none;
+}
+
+
+.divNavBar {
+    
+    animation-name: fade-in;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: none;
+        
+    /* shorthand
+    animation: fade-in 2s linear 0s 1 normal none;*/
+}
+@keyframes fade-in {
+        
+    0% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
 }
