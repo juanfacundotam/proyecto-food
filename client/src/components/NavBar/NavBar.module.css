@@ -19,14 +19,20 @@
 
 .active {
     margin: 0 20px;
-    color: white;
+    color: rgb(77, 241, 151);
+    border-bottom: 1px solid rgb(63, 202, 126);
+    border-radius: 50px 0 10px -0px;
+    padding: 0 3px 0 0;
+    font-size: 25px;
     text-decoration: none;
+    
 }
 
 .disable {
     margin: 0 20px;
-    color: aquamarine;
+    color: rgb(63, 202, 126);
     text-decoration: none;
+    font-size: 25px;
 }
 
 

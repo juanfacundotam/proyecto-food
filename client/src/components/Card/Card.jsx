@@ -13,7 +13,7 @@ const Card = ({ id, title, image, diets }) => {
         <div className={style.divDiets}>
           
           {diets?.map((diet) => {
-            return <p key={++count} className={style.diet}>&lt;{diet}&gt;</p>;
+            return <p key={++count} className={style.diet}>✔{diet}</p>;
           })}
         </div>
 

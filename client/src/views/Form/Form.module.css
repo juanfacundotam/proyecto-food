@@ -103,6 +103,7 @@
   text-align: start;
   /* border: 1px solid green; */
   font-size: 20px;
+  color: rgb(223, 191, 123);
   margin: 10px 0;
   z-index: 111;
 }
