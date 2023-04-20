@@ -1,0 +1,49 @@
+.divPagination {
+  background-color: rgba(207, 207, 207, 0.11);
+  backdrop-filter: blur(20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  margin: 40px 0 120px 0;
+  border-radius: 15px;
+}
+
+.lista {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline-start: 0;
+  list-style: none;
+  z-index: 999;
+}
+
+.items {
+  width: fit-content;
+  height: 23px;
+  border: 1px solid rgb(216, 198, 158);
+  margin: 5px;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.items:hover {
+  transform: scale(1.08);
+}
+.currentPage {
+  border: 3px solid rgba(63, 202, 126, 0.562);
+  margin: 0;
+  padding: 0;
+}
+
+.items a {
+  text-decoration: none;
+  cursor: pointer;
+
+  border-radius: 5px;
+  padding: 5px 5px;
+  color: rgb(223, 191, 123);
+}
+.items a:hover {
+  transform: scale(1.02);
+}

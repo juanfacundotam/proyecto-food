@@ -34,6 +34,9 @@
     text-decoration: none;
     font-size: 25px;
 }
+.disable:hover {
+    color: rgb(149, 182, 74);
+  }
 
 
 .divNavBar {

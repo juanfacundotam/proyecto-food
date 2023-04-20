@@ -114,7 +114,7 @@
   flex-direction: column;
   width: 500px;
   margin: 20px;
-  background-color: #88888825;
+  background-color: #ffffff18;
   padding: 15px 20px;
   border-radius: 15px;
   /* font-size: 10px; */
@@ -127,7 +127,7 @@
   justify-content: center;
   flex-direction: column;
   margin: 20px;
-  background-color: #88888825;
+  background-color: #ffffff18;
   padding: 15px 20px;
   border-radius: 15px;
   /* border: 1px solid red; */
@@ -141,7 +141,7 @@
   z-index: 111;
 }
 .form textarea {
-  background-color: #0c0c0c8c;
+  background-color: #0c0c0ccb;
   resize: none;
   width: 100%;
   text-align: start;
@@ -174,7 +174,7 @@
   border-radius: 10px;
   /* border: 1px solid rgba(255, 255, 255, 0.5); */
   border: transparent;
-  background-color: #0c0c0c8c;
+  background-color: #0c0c0ccb;
 }
 .form .divInputs input:focus {
   background-color: rgb(0, 0, 0);
@@ -194,6 +194,9 @@
   justify-content: start;
   align-items: center;
 }
+.form .divHealth input{
+  background-color: #0c0c0ce1;
+}
 
 .btnSubmit {
   background-color: rgb(39, 40, 41);
@@ -204,7 +207,7 @@
   
   padding: 10px 15px 10px 15px;
 
-  color: white;
+  color: rgb(223, 191, 123);
   font-size: 16px;
   margin-top: 50px;
   cursor: pointer;
@@ -222,26 +225,38 @@ transform: scale(1.05);
 
 
 .btnDel {
+
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.404);
-  color: white;
-  border: 3px solid white;
+  color: rgb(223, 191, 123);
+  border: 2px solid rgb(223, 191, 123);
   font-size: 20px;
   margin: 0 15px 0 0;
-  padding: 5px 11px;
+  padding: 0 6px 4px 5px;
+
+  /* padding: 0px 11px; */
   cursor: pointer;
+}
+.btnDel:hover {
+  color: white;
+  border: px solid white;
 }
 .btnAdd {
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.404);
-  color: white;
-  border: 3px solid white;
+  color: rgb(223, 191, 123);
+  border: 2px solid rgb(223, 191, 123);
   font-size: 20px;
-  margin: 0 10px 0 0;
-  padding: 5px 8px;
+
+  margin: 0 15px 0 0;
+  padding: 0 4px 0 4px;
+  /* padding: 0px 11px; */
   cursor: pointer;
 }
-
+.btnAdd:hover {
+  color: white;
+  border: 2px solid white;
+}
 
 .divLabelInstructions {
   /* border: 3px solid yellow; */
@@ -285,7 +300,7 @@ transform: scale(1.05);
   /* border: 2px solid orange; */
   border-radius: 15px;
   width: 80%;
-  background-color: #88888825;
+  background-color: #ffffff18;
   z-index: 111;
 }
 .divItemDiet {
@@ -389,7 +404,7 @@ padding: 5px;
   font-size: 15px;
 }
 .divInputs .error {
-  border: 1px solid rgba(255, 0, 0, 0.473);
+  border: 1px solid rgba(255, 0, 0, 0.274);
   font-size: 15px;
 }
 .divInputs .successHealth {
@@ -402,7 +417,7 @@ padding: 5px;
   background-color: #0c0c0c8c;
 }
 .divInputs .errorHealth {
-  border: 1px solid rgba(255, 0, 0, 0.473);
+  border: 1px solid rgba(255, 0, 0, 0.24);
   width: 12%;
   font-size: 15px;
   margin-top: 5px;
@@ -414,7 +429,7 @@ padding: 5px;
   border: 1px solid rgba(0, 128, 0, 0.452);
 }
 .textAreaError {
-  border: 1px solid rgba(255, 0, 0, 0.473);
+  border: 1px solid rgba(255, 0, 0, 0.253);
 }
 
 

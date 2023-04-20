@@ -6,7 +6,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
-
   z-index: 0;
   }
   
@@ -20,8 +19,6 @@
     flex-direction: row;
     margin: 150px 0;
     border-radius: 20px;
-    color: white;
-    z-index: 0;
   }
   
     .divContainer {
@@ -54,13 +51,15 @@
   
   .divText {
     /* border: 1px solid yellow; */
+    background-color: #ffffff2d;
     display: flex;
+    border-radius: 15px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 500px;
-    height: 500px;
-    z-index: 111;
+    width: 400px;
+    height: 380px;
+    color: rgb(203, 214, 221);
   }
   
   .aboutWall {

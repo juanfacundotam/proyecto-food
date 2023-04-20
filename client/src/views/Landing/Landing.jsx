@@ -25,12 +25,9 @@ const Landing = () => {
               <img src={foto} alt="Logo de la app" className={style.logo} />
             </div>
             <div className={style.divText}>
-              <h1 className={style.titleLanding}>Food PI</h1>
+              <h1 className={style.titleLanding}>Food Recipes</h1>
               <p className={style.parrafo}>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Dignissimos pariatur ad temporibus quibusdam iste praesentium
-                aperiam repellendus perspiciatis incidunt at!
-              </p>
+              ¡Bienvenidos a nuestra página de recetas! Aquí encontrarás una gran variedad de recetas deliciosas y fáciles de seguir, desde platos principales hasta postres, opciones veganas, vegetarianas y sin gluten. También ofrecemos consejos útiles para mejorar tus habilidades culinarias. ¡Explora y descubre nuevas formas de disfrutar de la comida!              </p>
             </div>
             <Link to="/home" className={style.link}>
               Ingresar
