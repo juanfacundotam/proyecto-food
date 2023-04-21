@@ -19,11 +19,11 @@ const Landing = () => {
     <div className={style.divLanding}>
       {foto ? (
         <>
-          {/* <div className={style.landingWall}></div> */}
+          <div className={style.landingWall}></div>
           <div className={style.divContainer}>
-            <div className={style.divImage}>
-              <img src={foto} alt="Logo de la app" className={style.logo} />
-            </div>
+            {/* <div className={style.divImage}> */}
+              {/* <img src={foto} alt="Logo de la app" className={style.logo} /> */}
+            {/* </div> */}
             <div className={style.divText}>
               <h1 className={style.titleLanding}>Food Recipes</h1>
               <p className={style.parrafo}>
