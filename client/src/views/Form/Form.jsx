@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import validation from "./validation";
 
-const Form = () => {
+const Form = ({setLoadNavs}) => {
   const navigate = useNavigate();
   const allDiets = useSelector((state) => state.diets);
   let [count, setCount] = useState(1);
@@ -31,11 +31,15 @@ const Form = () => {
 
   const dispatch = useDispatch();
   
+
+  setLoadNavs(false)
   useEffect(() => {
-    
     if (!allDiets.length) {
       dispatch(getAllDiets());
     }
+    return(() => {
+      setLoadNavs(false)
+    })
   }, [dispatch]);
 
   //HANDLERS *********************************************************************************
@@ -118,18 +122,7 @@ const Form = () => {
   };
 
   //PRINT HTML INSTRUCTIONS AND DIETS **************************************
-  // let isInstructionsComplete = Object.values(errors.instructions)
-  // .every((instruction) => instruction !== "");
 
-  // if (errors.instructions[0] === undefined) {
-  //   console.log(errors.instructions[0]);
-
-  // } else {
-  //   console.log("La prop tiene algo");
-
-  // }
-  // console.log(isInstructionsComplete)
-  // console.log(errors.healthscore)
 
   const printInstruction = () => {
     const arrayInstructions = Object.entries(recipe.instructions);
@@ -138,7 +131,6 @@ const Form = () => {
         <div className={style.divItemInstructions}>
           <label htmlFor="numeber">{elem[0]}</label>
           <textarea
-            // className={`${style.instructionText} ${isInstructionsComplete[0] ? style.textAreaSuccess : style.textAreaError }`}
             className={
               errors.instructions !== "" && errors.instructions === undefined ? style.textAreaSuccess : style.textAreaError
             }
@@ -176,6 +168,7 @@ const Form = () => {
     <div className={style.divForm}>
       {allDiets.length ? (
         <>
+        {setLoadNavs(true)}
           <div className={style.formWall}></div>
           <form onSubmit={handleSubmit} className={style.form}>
             <div className={style.divInputs}>

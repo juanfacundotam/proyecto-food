@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getRecipesDetail, cleanDetail } from "../../redux/actions";
 
-const Detail = () => {
+const Detail = ({setLoadNavs}) => {
   const dispatch = useDispatch();
   const params = useParams();
   const { id, title, image, healthscore, summary, instructions, diets } =
@@ -15,6 +15,7 @@ const Detail = () => {
     dispatch(getRecipesDetail(params.id));
     return () => {
       dispatch(cleanDetail());
+        setLoadNavs(false);
     };
   }, []);
 
@@ -58,6 +59,7 @@ const Detail = () => {
     <div className={style.container}>
       {image ? (
         <>
+          {setLoadNavs(true)}
           <div className={style.detailWall}></div>
           <div className={style.divDetail}>
             <div className={style.divTop}>

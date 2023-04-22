@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getRecipes} from "../../redux/actions";
 import Pagination from "../../components/pagination/Pagination";
 
-const Home = () => {
+const Home = ({setLoadNavs}) => {
   const dispatch = useDispatch();
   const recipes = useSelector(state => state.recipes)
 
@@ -21,10 +21,11 @@ const Home = () => {
   }
 
 
-
-
   useEffect(() => {
     dispatch(getRecipes());
+    return(() => {
+      setLoadNavs(false)
+    })
   }, [dispatch]);
 
 
@@ -32,6 +33,7 @@ const Home = () => {
     <div className={style.divHome} id="idHome">
       {recipes.length ? (
         <>
+        {setLoadNavs(true)}
         <div className={style.homeWall}></div>
           <CardsContainer 
           currentRecipe={currentRecipe}

@@ -61,6 +61,27 @@
     height: 380px;
     color: rgb(255, 255, 255);
   }
+
+
+
+  .divText .title {
+    font-size: 30px;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  .divText .parrafo1 {
+    margin: 0;
+  }
+  .divText .title2 {
+    font-size: 30px;
+    margin: 40px 0 6px 0;
+  }
+  .divText .parrafo2 {
+margin: 0;
+  }
+
+
+
   
   .aboutWall {
     background-image: url(../../assets/viewsWallPapers/fondo3.jpg),
@@ -111,14 +132,7 @@
     z-index: 111;
   }
   
-  .titleLanding {
-    z-index: 111;
-    font-size: 50px;
-  }
-  .parrafo {
-    width: 300px;
-  }
-  
+
   /* .link {
     background-color: aliceblue;
     color: white;

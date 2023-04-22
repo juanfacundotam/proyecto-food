@@ -3,8 +3,10 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
+import { useState } from "react";
 
 function App() {
+  const [loadNavs, setLoadNavs] = useState(false)
   const location = useLocation();
 
   return (
@@ -12,12 +14,12 @@ function App() {
       {location.pathname !== "/" && <NavBar />}
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/create" element={<Form />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/home" element={<Home setLoadNavs={setLoadNavs}/>} />
+        <Route path="/detail/:id" element={<Detail setLoadNavs={setLoadNavs}/>} />
+        <Route path="/create" element={<Form setLoadNavs={setLoadNavs}/>} />
+        <Route path="/about" element={<About setLoadNavs={setLoadNavs}/>} />
       </Routes>
-      {location.pathname !== "/" && <Footer />}
+      {location.pathname !== "/" && loadNavs && <Footer />}
 
     </div>
   );
