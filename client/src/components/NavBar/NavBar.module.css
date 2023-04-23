@@ -12,7 +12,7 @@
     backdrop-filter: blur(20px);
     background-color: rgba(156, 151, 151, 0.014);
     border-radius: 20px;
-    position: absolute;
+    position: relative;
 
     z-index: 111;
 }
@@ -52,6 +52,14 @@
     /* shorthand
     animation: fade-in 2s linear 0s 1 normal none;*/
 }
+
+.logo {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 460px;
+}
+
 @keyframes fade-in {
         
     0% {

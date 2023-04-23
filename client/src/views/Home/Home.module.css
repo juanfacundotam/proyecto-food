@@ -4,10 +4,11 @@
   width: 100%;
 
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   flex-direction: column;
   color: white;
+  margin-bottom: 100px;
 }
 .divHome .titleHome {
   margin-top: 150px;
@@ -50,8 +51,11 @@
 }
 
 
-
-
+.divSelects {
+  margin-top: 70px;
+  margin-bottom: 0px;
+  z-index: 999;
+}
 
 
   .customLoader {

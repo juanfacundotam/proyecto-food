@@ -7,7 +7,7 @@
     width: 920px;
     /* backdrop-filter: blur(20px);
     background-color: rgba(255, 255, 255, 0.103); */
-    margin-top: 150px;
+    margin-top: 30px;
     border-radius: 20px;
     margin-bottom: 0;
 
@@ -19,7 +19,7 @@
     animation-name: fadeIn;
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
-    animation-delay: 2s;
+    animation-delay: 1s;
 
     animation-fill-mode: both;
     }
@@ -28,3 +28,8 @@
     0% {opacity: 0;}
     100% {opacity: 1;}
     } 
+
+
+    .noResults {
+        margin-top: 100px;
+    }

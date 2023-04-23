@@ -34,9 +34,9 @@ const Form = ({setLoadNavs}) => {
 
   setLoadNavs(false)
   useEffect(() => {
-    if (!allDiets.length) {
-      dispatch(getAllDiets());
-    }
+    // if (!allDiets.length) {
+    //   dispatch(getAllDiets());
+    // }
     return(() => {
       setLoadNavs(false)
     })

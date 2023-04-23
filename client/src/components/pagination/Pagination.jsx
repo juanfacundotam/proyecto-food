@@ -1,33 +1,51 @@
-import React, {useState} from "react";
+import React, { useEffect, useState } from "react";
 import style from "./Pagination.module.css";
 
-
-const Pagination = ({ recipesXPage, recipes, pages }) => {
-    const [currentPage, setCurrentPage] = useState(1);
+const Pagination = ({
+  recipeXPage,
+  recipes,
+  pages,
+  pageStyle,
+  setPageStyle,
+}) => {
+  const [currentPage, setCurrentPage] = useState(pageStyle);
   const pageNumbers = [];
 
+  useEffect(() => {
+    setCurrentPage(currentPage);
+  }, [currentPage]);
 
-  for (let i = 1; i <= Math.ceil(recipes.length / recipesXPage); i++) {
+  for (let i = 1; i <= Math.ceil(recipes.length / recipeXPage); i++) {
     pageNumbers.push(i);
   }
 
   return (
-    <div className={style.divPagination}>
-      <ul className={style.lista}>
-        {pageNumbers &&
-          pageNumbers.map((num) => (
-            <li className={`${style.items} ${
-                currentPage === num ? style.currentPage : ""
-              }`} key={num}>
-                <a href="#idHome" onClick={() => {
-                    pages(num)
-                    setCurrentPage(num)
-                }}>{num}</a>
-            </li>
-          ))}
-      </ul>
-    </div>
+  pageNumbers.length > 1 &&
+    (<>
+      <div className={style.divPagination}>
+        <ul className={style.lista}>
+          {pageNumbers.map((num) => (
+              <li
+                className={`${style.items} ${
+                  pageStyle === num ? style.currentPage : ""
+                }`}
+                key={num}
+              >
+                <a
+                  onClick={() => {
+                    pages(num);
+                    // setCurrentPage(num)
+                    setPageStyle(num);
+                  }}
+                >
+                  {num}
+                </a>
+              </li>
+            ))}
+        </ul>
+      </div>
+    </>)
   );
 };
-
+// href="#idHome"
 export default Pagination;

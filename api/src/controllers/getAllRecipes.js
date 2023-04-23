@@ -25,7 +25,7 @@ const getAllRecipes = async () => {
       id: recipe.id,
       title: recipe.title,
       image: recipe.image,
-      // healthscore: recipe.healthScore,
+      healthscore: recipe.healthscore,
       // summary: recipe.summary,
       // instructions: recipe.instructions,
       created: recipe.created,
@@ -37,15 +37,19 @@ const getAllRecipes = async () => {
   let response = await axios.get(
     "https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5"
   );
+  // let response = await axios.get(
+  //   "https://api.spoonacular.com/recipes/complexSearch?apiKey=80ded4eb560843f7ab7a0f95adcf3f80&addRecipeInformation=true"
+  // );
   const allRecipes = response.data.results.map((recipe) => {
     return {
       id: recipe.id,
       title: recipe.title,
       image: recipe.image,
-      // healthscore: recipe.healthScore,
+      healthscore: recipe.healthScore,
       // summary: recipe.summary,
       // instructions: recipe.instructions,
       diets: recipe.diets,
+      created: false,
     };
   });
 
