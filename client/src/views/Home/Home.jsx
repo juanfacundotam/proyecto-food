@@ -2,6 +2,7 @@ import CardsContainer from "../../components/CardsContainer/CardsContainer";
 import style from "./Home.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Logo from "../../components/Logo/Logo";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getRecipes,
@@ -20,8 +21,7 @@ const Home = ({ setLoadNavs }) => {
   const navigate = useNavigate();
   const { recipes } = useSelector((state) => state);
   const allDiets = useSelector((state) => state.diets);
-  const [search, setSearch] = useState("")
-  
+  const [search, setSearch] = useState("");
 
   //Clean Filters
   // const [order, setOrder] = useState("");
@@ -84,7 +84,7 @@ const Home = ({ setLoadNavs }) => {
     document.getElementById("select4").value = "FilterApiBdd";
     setPageStyle(1);
     setCurrentPage(1);
-    setSearch("")
+    setSearch("");
     // Reinicia los estados de los selectores
     // setOrder("");
     // setHealthScore("");
@@ -93,22 +93,32 @@ const Home = ({ setLoadNavs }) => {
   };
 
   const handleSearchChange = (event) => {
-    setSearch(event.target.value)
-  }
+    setSearch(event.target.value);
+  };
   const handleBtnSearch = () => {
-    dispatch(searchByQuery(search))
-  }
-
+    dispatch(searchByQuery(search));
+  };
 
   return (
     <div className={style.divHome} id="idHome">
       {recipes.length ? (
         <>
           <div className={style.homeWall}></div>
+          <Logo />
           <div className={style.divSelects}>
-            <input type="text" name="search" value={search} onChange={handleSearchChange} />
-            <button onClick={handleBtnSearch}>Buscar</button>
-            <div>
+            <div className={style.divSearch}>
+              <input
+                type="text"
+                name="search"
+                value={search}
+                onChange={handleSearchChange}
+                className={style.searchBar}
+              />
+              <button onClick={handleBtnSearch} className={style.btnSearch}>
+                Buscar
+              </button>
+            </div>
+            <div className={style.divSelect12}>
               <select
                 onChange={handleOrderId}
                 className={style.select1}
@@ -135,7 +145,7 @@ const Home = ({ setLoadNavs }) => {
                 <option value="Descendente">Descendente</option>
               </select>
             </div>
-            <div>
+            <div className={style.divSelect34}>
               <select
                 onChange={handleFilterApiBdd}
                 className={style.select4}
@@ -143,11 +153,11 @@ const Home = ({ setLoadNavs }) => {
                 id="select4"
               >
                 <option disabled="disabled" value="FilterApiBdd">
-                  Filter By API-BDD
+                  Filter By Created
                 </option>
                 <option value="All">All</option>
-                <option value="API">API</option>
-                <option value="BDD">BDD</option>
+                <option value="API">Aplicación</option>
+                <option value="BDD">Creadas</option>
               </select>
               <select
                 onChange={handleFilterDiets}
@@ -167,7 +177,9 @@ const Home = ({ setLoadNavs }) => {
                   ))}
               </select>
             </div>
-            <button onClick={handleCleanFilters}>Limpiar Filtros</button>
+            <button onClick={handleCleanFilters} className={style.btnClean}>
+              Limpiar Filtros
+            </button>
           </div>
           <Pagination
             pageStyle={pageStyle}

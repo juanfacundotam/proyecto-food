@@ -1,0 +1,28 @@
+.divLogo{
+    border: 1px solid rgba(148, 148, 148, 0.616);
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    margin: 20px;
+    padding:  5px 7px 7px 7px;
+    border-radius: 2px;
+    z-index: 111;
+  }
+  .divLogo .logo {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin: 0;
+  
+  }
+  .divLogo .logoTitle{
+    /* border: 1px solid green; */
+  margin: 0;
+  font-size: 15px;
+  }
+  .divLogo .logoParrafo{
+    /* border: 1px solid green; */
+    margin: 0;
+    font-size: 10px;
+  }

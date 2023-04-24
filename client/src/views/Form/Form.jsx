@@ -1,5 +1,6 @@
 import axios from "axios";
 import style from "./Form.module.css";
+import Logo from "../../components/Logo/Logo";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getAllDiets } from "../../redux/actions";
@@ -170,6 +171,8 @@ const Form = ({setLoadNavs}) => {
         <>
         {setLoadNavs(true)}
           <div className={style.formWall}></div>
+          <Logo/>
+          <h1 className={style.viewTitle}>Create New Recipe</h1>
           <form onSubmit={handleSubmit} className={style.form}>
             <div className={style.divInputs}>
               <label htmlFor="title" className={style.formLabel}>
@@ -259,6 +262,7 @@ const Form = ({setLoadNavs}) => {
                 errors.image
               }
             >Create</button>
+          </form>
             <div
               className={
                 errors.title === undefined &&
@@ -298,7 +302,6 @@ const Form = ({setLoadNavs}) => {
               }
 
             </div>
-          </form>
         </>
       ) : (
         <div className={style.customLoader}></div>

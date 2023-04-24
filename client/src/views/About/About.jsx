@@ -1,4 +1,5 @@
 import style from "./About.module.css";
+import Logo from "../../components/Logo/Logo";
 import { useEffect, useState } from "react";
 // import foto from "../../assets/fotoCV.jpg";
 
@@ -25,6 +26,7 @@ const About = ({setLoadNavs}) => {
         <>
         {setLoadNavs(true)}
           <div className={style.aboutWall}></div>
+          <Logo/>
           <div className={style.divContainer}>
             <div className={style.divImage}>
               <img src={foto} alt="Logo de la app" className={style.logo} />

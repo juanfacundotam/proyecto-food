@@ -50,37 +50,154 @@
   }
 }
 
+.customLoader {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #10f4e9;
+  margin-top: 250px;
+  display: grid;
+  animation: h1 4s infinite linear;
+}
+.customLoader::before,
+.customLoader::after {
+  content: "";
+  grid-area: 1/1;
+  margin: auto;
+  width: 70.7%;
+  height: 70.7%;
+  border: 2px solid #10f4e9;
+  animation: inherit;
+}
+.customLoader::after {
+  width: 50%;
+  height: 50%;
+  border: 2px solid #10f4e9;
+  animation-duration: 2s;
+}
+@keyframes h1 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
 
 .divSelects {
-  margin-top: 70px;
+  /* border: 1px solid yellow; */
+  margin-top: 50px;
   margin-bottom: 0px;
   z-index: 999;
 }
 
+.divSelects .divSearch {
+  /* border: 1px solid green; */
+  margin-bottom: 10px;
+}
+.divSelects .searchBar {
+  background-color: #3d3d3d52;
+  color: wheat;;
+  /* border: 1px solid rgba(255, 255, 255, 0.459); */
+  height: 17px;
+}
+.divSelects .btnSearch {
+  background-color: #10745e;
+  border: none;
+  color: wheat;
+  height: 22px;
+  cursor: pointer;
+}
+.divSelects .btnSearch:hover {
+  background-color: #17bd99;
+  color: rgb(240, 237, 231);
 
-  .customLoader {
-    width:50px;
-    height:50px;
-    border:2px solid #10F4E9;
-    display: grid;
-    animation: h1 4s infinite linear;
-  }
-  .customLoader::before,
-  .customLoader::after {
-    content: "";
-    grid-area: 1/1;
-    margin:auto;
-    width:70.7%;
-    height:70.7%; 
-    border:2px solid #10F4E9;
-    animation: inherit;
-  }
-  .customLoader::after {
-    width:50%;
-    height:50%;
-    border:2px solid #10F4E9;
-    animation-duration: 2s;
-  }
-  @keyframes h1{
-    100% {transform:rotate(1turn)}
-  }
+}
+.divSelects .divSelect12 {
+  /* border: 1px solid rebeccapurple; */
+  margin-bottom: 10px;
+}
+.select1 {
+  height: 21px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.452);
+  background-color: #122020cc;
+  color: rgb(248, 231, 194);
+  -moz-appearance: none;
+}
+
+.select1 {
+  /* background-color: #d61212;
+  color: #333;
+  border: none;  */
+  /* elimina el borde del select */
+
+  /* -webkit-appearance: none;
+  -moz-appearance: none; */
+}
+
+/* .select1 option:checked {
+  background-color: #c00c0c;
+} */
+
+.divSelect12 .select2 {
+  height: 21px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.452);
+  background-color: #122020cc;
+  color: rgb(248, 231, 194);
+  -moz-appearance: none;
+}
+.divSelects .divSelect34 {
+  /* border: 1px solid rebeccapurple; */
+  margin-bottom: 10px;
+}
+.divSelects .select3 {
+  height: 21px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.452);
+  background-color: #122020cc;
+  color: rgb(248, 231, 194);
+  -moz-appearance: none;
+}
+.divSelects .select4 {
+  height: 21px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.452);
+  background-color: #122020cc;
+  color: rgb(248, 231, 194);
+  -moz-appearance: none;
+}
+
+.btnClean {
+  height: 30px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.452);
+  background-color: #193a38cc;
+  color: rgb(248, 231, 194);
+  /* -moz-appearance: none; */
+}
+
+
+.divLogo{
+  border: 1px solid rgba(148, 148, 148, 0.616);
+  position: absolute;
+  top: 0;
+  left: 0px;
+  margin: 20px;
+  padding:  5px 7px 7px 7px;
+  border-radius: 2px;
+}
+.divLogo .logo {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin: 0;
+
+}
+.divLogo .logoTitle{
+  /* border: 1px solid green; */
+margin: 0;
+font-size: 15px;
+}
+.divLogo .logoParrafo{
+  /* border: 1px solid green; */
+  margin: 0;
+  font-size: 10px;
+}

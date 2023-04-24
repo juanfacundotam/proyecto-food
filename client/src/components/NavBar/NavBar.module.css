@@ -19,8 +19,9 @@
 
 .active {
     margin: 0 20px;
+    background-color: transparent;
     color: rgb(70, 175, 117);
-    border: 1px solid rgb(75, 182, 123);
+    border-bottom: 1px solid rgb(75, 182, 123);
     border-radius: 6px;
     padding: 0 4px 2px 3px;
     font-size: 25px;
@@ -51,13 +52,6 @@
         
     /* shorthand
     animation: fade-in 2s linear 0s 1 normal none;*/
-}
-
-.logo {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    left: 460px;
 }
 
 @keyframes fade-in {
