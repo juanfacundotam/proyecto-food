@@ -1,7 +1,7 @@
 import Landing from "./Landing/Landing"
 import Home from "./Home/Home"
-import Form from "./Form/Form"
+import Create from "./Create/Create"
 import Detail from "./Detail/Detail"
 import About from "./About/About"
 
-export {Landing, Home, Form, Detail, About}
+export {Landing, Home, Create, Detail, About}

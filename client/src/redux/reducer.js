@@ -10,6 +10,7 @@ import {
   ORDER_HEALTHSCORE,
   GET_RECIPES_ORDER,
   SEARCH_BY_QUERY,
+  DELETE_RECIPE,
 } from "./actions";
 
 const initialState = {
@@ -84,6 +85,8 @@ const rootReducer = (state = initialState, action) => {
     case SEARCH_BY_QUERY:
       console.log(action.payload)
       return { ...state, recipes: action.payload };
+      case DELETE_RECIPE:
+        return {state, recipes: action.payload, allRecipes: action.payload }
     default:
       return { ...state };
   }

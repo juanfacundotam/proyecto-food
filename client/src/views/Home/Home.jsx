@@ -15,6 +15,7 @@ import {
 } from "../../redux/actions";
 import Pagination from "../../components/pagination/Pagination";
 import { searchByQuery } from "../../redux/actions";
+import Update from "../../components/Update/Update";
 
 const Home = ({ setLoadNavs }) => {
   const dispatch = useDispatch();
@@ -22,13 +23,14 @@ const Home = ({ setLoadNavs }) => {
   const { recipes } = useSelector((state) => state);
   const allDiets = useSelector((state) => state.diets);
   const [search, setSearch] = useState("");
+  const [update, setUpdate] = useState(false);
+  const [recipeUpdate, setRecipeUpdate] = useState({});
 
   //Clean Filters
   // const [order, setOrder] = useState("");
   // const [healthScore, setHealthScore] = useState("");
   // const [filterDiets, setFilterDiets] = useState("");
   // const [filterApiBdd, setFilterApiBdd] = useState("");
-
   //Paginado
   const [pageStyle, setPageStyle] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
@@ -42,6 +44,7 @@ const Home = ({ setLoadNavs }) => {
   };
 
   setLoadNavs(true);
+  console.log(update);
   useEffect(() => {
     if (!recipes.length) {
       dispatch(getRecipes());
@@ -99,103 +102,132 @@ const Home = ({ setLoadNavs }) => {
     dispatch(searchByQuery(search));
   };
 
+
+
+  // if (update) {
+  //   return (
+  //     <div className={style.divHome} id="idHome">
+  //       <div className={style.homeWall}></div>
+  //       <div className={style.divUpdate}>
+  //         <h1 className={style.updateTitle}>Estoy modificando</h1>
+  //         <button onClick={handleCloseUpdate} className={style.updateBtn}>
+  //           X
+  //         </button>
+  //       </div>
+  //     </div>
+  //   );
+  // }
+
   return (
     <div className={style.divHome} id="idHome">
       {recipes.length ? (
         <>
-          <div className={style.homeWall}></div>
-          <Logo />
-          <div className={style.divSelects}>
-            <div className={style.divSearch}>
-              <input
-                type="text"
-                name="search"
-                value={search}
-                onChange={handleSearchChange}
-                className={style.searchBar}
-              />
-              <button onClick={handleBtnSearch} className={style.btnSearch}>
-                Buscar
-              </button>
-            </div>
-            <div className={style.divSelect12}>
-              <select
-                onChange={handleOrderId}
-                className={style.select1}
-                defaultValue="Order"
-                id="select1"
-              >
-                <option disabled="disabled" value="Order">
-                  Order By Id
-                </option>
-                <option value="Ascendente">Ascendente</option>
-                <option value="Descendente">Descendente</option>
-              </select>
-
-              <select
-                onChange={handleOrderHealthScore}
-                className={style.select2}
-                defaultValue="HealthScore"
-                id="select2"
-              >
-                <option disabled="disabled" value="HealthScore">
-                  Order By HealthScore
-                </option>
-                <option value="Ascendente">Ascendente</option>
-                <option value="Descendente">Descendente</option>
-              </select>
-            </div>
-            <div className={style.divSelect34}>
-              <select
-                onChange={handleFilterApiBdd}
-                className={style.select4}
-                defaultValue="FilterApiBdd"
-                id="select4"
-              >
-                <option disabled="disabled" value="FilterApiBdd">
-                  Filter By Created
-                </option>
-                <option value="All">All</option>
-                <option value="API">Aplicación</option>
-                <option value="BDD">Creadas</option>
-              </select>
-              <select
-                onChange={handleFilterDiets}
-                className={style.select3}
-                defaultValue="FilterDiets"
-                id="select3"
-              >
-                <option disabled="disabled" value="FilterDiets">
-                  Filter By Diets
-                </option>
-                <option value="All">All</option>
-                {allDiets.length &&
-                  allDiets.map((diet) => (
-                    <option key={diet.id} value={diet.name}>
-                      {diet.name}
+          {update && allDiets.length ? (<>
+            <div className={style.homeWall}></div>
+            <Logo />
+            <Update setUpdate={setUpdate} setLoadNavs={setLoadNavs} recipeUpdate={recipeUpdate}/>
+          </>
+            ) : (
+              <>
+              <div className={style.homeWall}></div>
+              <Logo />
+              <div className={style.divSelects}>
+                <div className={style.divSearch}>
+                  <input
+                    type="text"
+                    name="search"
+                    value={search}
+                    onChange={handleSearchChange}
+                    className={style.searchBar}
+                  />
+                  <button onClick={handleBtnSearch} className={style.btnSearch}>
+                    Buscar
+                  </button>
+                </div>
+                <div className={style.divSelect12}>
+                  <select
+                    onChange={handleOrderId}
+                    className={style.select1}
+                    defaultValue="Order"
+                    id="select1"
+                  >
+                    <option disabled="disabled" value="Order">
+                      Order By Id
                     </option>
-                  ))}
-              </select>
-            </div>
-            <button onClick={handleCleanFilters} className={style.btnClean}>
-              Limpiar Filtros
-            </button>
-          </div>
-          <Pagination
-            pageStyle={pageStyle}
-            setPageStyle={setPageStyle}
-            recipeXPage={recipeXPage}
-            recipes={recipes}
-            pages={pages}
-          />
-          <CardsContainer currentRecipe={currentRecipe} />
-          <Pagination
-            pageStyle={pageStyle}
-            setPageStyle={setPageStyle}
-            recipeXPage={recipeXPage}
-            recipes={recipes}
-            pages={pages}
-          />
+                    <option value="Ascendente">Ascendente</option>
+                    <option value="Descendente">Descendente</option>
+                  </select>
+
+                  <select
+                    onChange={handleOrderHealthScore}
+                    className={style.select2}
+                    defaultValue="HealthScore"
+                    id="select2"
+                  >
+                    <option disabled="disabled" value="HealthScore">
+                      Order By HealthScore
+                    </option>
+                    <option value="Ascendente">Ascendente</option>
+                    <option value="Descendente">Descendente</option>
+                  </select>
+                </div>
+                <div className={style.divSelect34}>
+                  <select
+                    onChange={handleFilterApiBdd}
+                    className={style.select4}
+                    defaultValue="FilterApiBdd"
+                    id="select4"
+                  >
+                    <option disabled="disabled" value="FilterApiBdd">
+                      Filter By Created
+                    </option>
+                    <option value="All">All</option>
+                    <option value="API">Aplicación</option>
+                    <option value="BDD">Creadas</option>
+                  </select>
+                  <select
+                    onChange={handleFilterDiets}
+                    className={style.select3}
+                    defaultValue="FilterDiets"
+                    id="select3"
+                  >
+                    <option disabled="disabled" value="FilterDiets">
+                      Filter By Diets
+                    </option>
+                    <option value="All">All</option>
+                    {allDiets.length &&
+                      allDiets.map((diet) => (
+                        <option key={diet.id} value={diet.name}>
+                          {diet.name}
+                        </option>
+                      ))}
+                  </select>
+                </div>
+                <button onClick={handleCleanFilters} className={style.btnClean}>
+                  Limpiar Filtros
+                </button>
+              </div>
+              <Pagination
+                pageStyle={pageStyle}
+                setPageStyle={setPageStyle}
+                recipeXPage={recipeXPage}
+                recipes={recipes}
+                pages={pages}
+              />
+              <CardsContainer
+                currentRecipe={currentRecipe}
+                setUpdate={setUpdate}
+                setRecipeUpdate={setRecipeUpdate}
+              />
+              <Pagination
+                pageStyle={pageStyle}
+                setPageStyle={setPageStyle}
+                recipeXPage={recipeXPage}
+                recipes={recipes}
+                pages={pages}
+              />
+            </>
+          )}
         </>
       ) : (
         <div className={style.customLoader}></div>

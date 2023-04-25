@@ -1,65 +1,4 @@
-.divForm {
-  min-height: 100vh;
 
-  width: 100%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding-bottom: 130px;
-
-
-  z-index: 0;
-}
-
-.divForm .viewTitle {
-  color: rgb(218, 198, 155);
-  font-size: 20px;
-  margin-top: 50px;
-  z-index: 111;
-}
-
-.formWall {
-  background-image: url(../../assets/viewsWallPapers/fondo2.jpg),
-    linear-gradient(100deg, #000000, #00000025);
-  position: fixed;
-  top: 0;
-
-  width: 100%;
-  height: 100%;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: right;
-
-  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.034), rgb(0, 0, 0));
-  background-blend-mode: multiply;
-  background-color: rgba(0, 0, 0, 0.178);
-  z-index: 0;
-}
-
-.formWall {
-  /* -webkit-animation-name: fadeInRight; */
-  animation-name: fadeInRight;
-  /* -webkit-animation-duration: 1s; */
-  animation-duration: 0.5s;
-  /* -webkit-animation-fill-mode: both; */
-  animation-fill-mode: none;
-}
-
-@keyframes fadeInRight {
-  0% {
-    opacity: 0;
-    /* -webkit-transform: translate3d(100%, 0, 0); */
-    transform: translate3d(100%, 0, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-    /* -webkit-transform: none; */
-    /* transform: none; */
-  }
-}
 
 .form {
   /* border: 1px solid red; */
@@ -384,6 +323,44 @@ padding: 5px;
   display: none;
 } */
 
+
+.form .divInputs .success {
+  border: 1px solid rgba(0, 128, 0, 0.452);
+  font-size: 13px;
+}
+.form .divInputs .error {
+  border: 1px solid rgba(255, 0, 0, 0.274);
+  font-size: 13px;
+}
+.form .divInputs .successHealth {
+  border: 1px solid rgba(0, 128, 0, 0.452);
+  width: 100%;
+  font-size: 13px;
+  margin-top: 5px;
+  margin-left: 18px;
+  backdrop-filter: blur(20px);
+
+}
+.form .divInputs .errorHealth {
+  border: 1px solid rgba(255, 0, 0, 0.24);
+  width: 100%;
+  font-size: 13px;
+  margin-top: 5px;
+  margin-left: 18px;
+  backdrop-filter: blur(20px);
+
+}
+.textAreaSuccess {
+  border: 1px solid rgba(0, 128, 0, 0.452);
+}
+.textAreaError {
+  border: 1px solid rgba(255, 0, 0, 0.253);
+}
+
+
+
+/*ERRORES ABAJO DEL BUTTON*/
+
 .divErrores {
   /* border: 1px solid wheat; */
   background-color: rgba(184, 51, 51, 0.659);
@@ -417,38 +394,3 @@ padding: 5px;
   color: rgb(255, 255, 255);
   margin: 5px 20px 5px 20px;
 }
-
-.divInputs .success {
-  border: 1px solid rgba(0, 128, 0, 0.452);
-  font-size: 15px;
-}
-.divInputs .error {
-  border: 1px solid rgba(255, 0, 0, 0.274);
-  font-size: 15px;
-}
-.divInputs .successHealth {
-  border: 1px solid rgba(0, 128, 0, 0.452);
-  width: 12%;
-  font-size: 15px;
-  margin-top: 5px;
-  margin-left: 18px;
-  backdrop-filter: blur(20px);
-  background-color: #0c0c0c8c;
-}
-.divInputs .errorHealth {
-  border: 1px solid rgba(255, 0, 0, 0.24);
-  width: 12%;
-  font-size: 15px;
-  margin-top: 5px;
-  margin-left: 18px;
-  backdrop-filter: blur(20px);
-  background-color: #0c0c0c8c;
-}
-.textAreaSuccess {
-  border: 1px solid rgba(0, 128, 0, 0.452);
-}
-.textAreaError {
-  border: 1px solid rgba(255, 0, 0, 0.253);
-}
-
-

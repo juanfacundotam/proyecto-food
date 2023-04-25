@@ -7,7 +7,7 @@
     margin: 20px;
     padding:  5px 7px 7px 7px;
     border-radius: 2px;
-    z-index: 111;
+    z-index: 999;
   }
   .divLogo .logo {
     width: 40px;

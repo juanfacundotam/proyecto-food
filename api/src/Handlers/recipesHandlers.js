@@ -2,6 +2,7 @@ const getRecipeById = require("../controllers/getRecipeById");
 const getRecipeByQuery = require("../controllers/getRecipesQuery")
 const postRecipe = require("../controllers/postRecipe")
 const getAllRecipes = require("../controllers/getAllRecipes")
+const deleteRecipe = require("../controllers/deleteRecipe");
 
 
 const getRecipesIdHandler = async (req, res) => {
@@ -45,10 +46,32 @@ const postRecipesHandler = async (req, res) => {
       res.status(404).json({error: error.message});
   }
   }
+
+  const deleteRecipesHandler = async (req, res) => {
+    const {idRecipe} = req.params;
+    try {
+      const recipeDeleted = await deleteRecipe(idRecipe);
+      res.status(201).json({recipeDeleted, deteled: "OK"});
+    } catch (error) {
+      res.status(400).json({error: error.message});
+    }
+
+  }
   
+  const updateRecipeHandler = async (req, res) => {
+    const {idRecipe} = req.params;
+    try {
+      const recipeUpdate = await updateRecipe(idRecipe);
+      res.status(203).json({recipeUpdate, Update: "OK"});
+    } catch (error) {
+      res.status(400).json({error: error.message});
+    }
+
+  }
 
 
-module.exports = { getRecipesIdHandler, getRecipesQueryHandler, postRecipesHandler };
+
+module.exports = { getRecipesIdHandler, getRecipesQueryHandler, postRecipesHandler, deleteRecipesHandler, updateRecipeHandler};
 
 // 📍 POST | /recipes
 // Esta ruta recibirá todos los datos necesarios para crear una nueva receta y relacionarla con los tipos de dieta solicitados.

@@ -1,22 +1,88 @@
 import style from "./Card.module.css";
 import { Link } from "react-router-dom";
+import { BsPencilSquare } from "react-icons/bs";
+import { MdDelete } from "react-icons/md";
+import { deleteRecipe, getRecipes, refreshRecipes } from "../../redux/actions";
+import { useDispatch } from "react-redux";
 
-const Card = ({ id, title, image, diets }) => {
-  let count = 0
+const Card = ({
+  id,
+  title,
+  image,
+  diets,
+  healthscore,
+  instructions,
+  created,
+  setUpdate,
+  setRecipeUpdate
+}) => {
+  const dispatch = useDispatch();
+  let count = 0;
+  const recipeToHome = {
+    id,
+    title,
+    image,
+    diets,
+    healthscore,
+    instructions,
+    created,
+  };
+  const handleUpdateRecipe = () => {
+    // console.log(setUpdate)
+    setUpdate(true);
+    setRecipeUpdate(recipeToHome)
+  };
+
+  const handleDeleteRecipe = () => {
+    let flag = myFunction();
+    if (flag) {
+      dispatch(deleteRecipe(id));
+      dispatch(refreshRecipes());
+      // eslint-disable-next-line no-restricted-globals
+      location.reload();
+    }
+  };
+
+  function myFunction() {
+    // eslint-disable-next-line no-restricted-globals
+    var result = confirm("¿Estás seguro de que deseas eliminar la receta?");
+    if (result == true) {
+      alert("Receta eliminada correctamente");
+      return true;
+    } else {
+      alert("La receta NO fue eliminada");
+      return false;
+    }
+  }
   return (
     <div className={style.divCard}>
+      {created && (
+        <div className={style.divUpdate}>
+          <BsPencilSquare
+            className={style.iconUpdate}
+            onClick={handleUpdateRecipe}
+          />
+          <MdDelete className={style.iconDelete} onClick={handleDeleteRecipe} />
+          {/* <button className={style.btnUpdate}><BsPencilSquare className={style.iconUpdate}/></button> */}
+          {/* <button className={style.btnDelete}><MdDelete className={style.iconDelete}/></button> */}
+          {/* <button className={style.btnUpdate}>update</button> */}
+          {/* <button className={style.btnDelete}>delete</button> */}
+        </div>
+      )}
       <img src={image} alt="Image Recipe" className={style.image} />
       <div className={style.divText}>
         <Link to={`/detail/${id}`} className={style.linkDetail}>
           {title}
         </Link>
         <div className={style.divDiets}>
-          
           {diets?.map((diet) => {
-            return <p key={++count} className={style.diet}>✔{diet}</p>;
+            return (
+              <p key={++count} className={style.diet}>
+                ✔{diet}
+              </p>
+            );
           })}
         </div>
-
       </div>
     </div>
   );

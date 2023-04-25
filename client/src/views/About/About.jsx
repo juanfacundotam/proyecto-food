@@ -3,10 +3,10 @@ import Logo from "../../components/Logo/Logo";
 import { useEffect, useState } from "react";
 // import foto from "../../assets/fotoCV.jpg";
 
-const About = ({setLoadNavs}) => {
+const About = ({ setLoadNavs }) => {
   const [foto, setFoto] = useState(null);
 
-  setLoadNavs(false)
+  setLoadNavs(false);
   useEffect(() => {
     import("../../assets/fotoCV.jpg")
       .then((fotoModule) => {
@@ -15,18 +15,17 @@ const About = ({setLoadNavs}) => {
       .catch((error) => {
         console.log(error);
       });
-      return(() => {
-        setLoadNavs(false)
-      })
+    return () => {
+      setLoadNavs(false);
+    };
   }, []);
   return (
     <div className={style.divAbout}>
-
       {foto ? (
         <>
-        {setLoadNavs(true)}
+          {setLoadNavs(true)}
           <div className={style.aboutWall}></div>
-          <Logo/>
+          <Logo />
           <div className={style.divContainer}>
             <div className={style.divImage}>
               <img src={foto} alt="Logo de la app" className={style.logo} />
@@ -34,10 +33,9 @@ const About = ({setLoadNavs}) => {
 
             <div className={style.divText}>
               <h1 className={style.title}>Food Recipes APP</h1>
-              <p className={style.parrafo1}>Aplicacion WEB FullStack</p>
-              <p className={style.parrafo1}>
-                JavaScript - React - Redux - Express - Sequelize
-              </p>
+              <p className={style.parrafo}>Aplicacion WEB FullStack</p>
+              <p className={style.parrafo1}>JavaScript - React - Redux</p>
+              <p className={style.parrafo1}>Express - Sequelize</p>
 
               <h3 className={style.title2}>Sobre Mí</h3>
               <p className={style.parrafo2}>Juan Facundo Tam</p>

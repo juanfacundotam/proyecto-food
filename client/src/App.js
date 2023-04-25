@@ -1,4 +1,4 @@
-import { Landing, Home, Detail, Form, About } from "./views";
+import { Landing, Home, Detail, Create, About } from "./views";
 import { Routes, Route, useLocation } from "react-router-dom";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
@@ -16,7 +16,7 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home setLoadNavs={setLoadNavs}/>} />
         <Route path="/detail/:id" element={<Detail setLoadNavs={setLoadNavs}/>} />
-        <Route path="/create" element={<Form setLoadNavs={setLoadNavs}/>} />
+        <Route path="/create" element={<Create setLoadNavs={setLoadNavs}/>} />
         <Route path="/about" element={<About setLoadNavs={setLoadNavs}/>} />
       </Routes>
       {location.pathname !== "/" && loadNavs && <Footer />}
