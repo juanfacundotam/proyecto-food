@@ -2,7 +2,7 @@ import style from "./Card.module.css";
 import { Link } from "react-router-dom";
 import { BsPencilSquare } from "react-icons/bs";
 import { MdDelete } from "react-icons/md";
-import { deleteRecipe, getRecipes, refreshRecipes } from "../../redux/actions";
+import { deleteRecipe, getRecipesDetail, refreshRecipes } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 
 const Card = ({
@@ -27,10 +27,9 @@ const Card = ({
     instructions,
     created,
   };
-  const handleUpdateRecipe = () => {
-    // console.log(setUpdate)
+  const handleUpdateRecipe = async() => {
+    await dispatch(getRecipesDetail(id))
     setUpdate(true);
-    setRecipeUpdate(recipeToHome)
   };
 
   const handleDeleteRecipe = () => {

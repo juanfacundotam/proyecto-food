@@ -3,10 +3,10 @@ import Logo from "../../components/Logo/Logo";
 import { useEffect, useState } from "react";
 // import foto from "../../assets/fotoCV.jpg";
 
-const About = ({ setLoadNavs }) => {
+const About = ({ handleLoadNavs }) => {
   const [foto, setFoto] = useState(null);
 
-  setLoadNavs(false);
+
   useEffect(() => {
     import("../../assets/fotoCV.jpg")
       .then((fotoModule) => {
@@ -15,15 +15,15 @@ const About = ({ setLoadNavs }) => {
       .catch((error) => {
         console.log(error);
       });
+      foto && handleLoadNavs(true);
     return () => {
-      setLoadNavs(false);
+      handleLoadNavs(false);
     };
   }, []);
   return (
     <div className={style.divAbout}>
       {foto ? (
         <>
-          {setLoadNavs(true)}
           <div className={style.aboutWall}></div>
           <Logo />
           <div className={style.divContainer}>

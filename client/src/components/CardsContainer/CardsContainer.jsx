@@ -8,15 +8,14 @@ const CardsContainer = ({ currentRecipe, setUpdate, setRecipeUpdate  }) => {
   return (
     <div className={style.divCardsContainer}>
       {currentRecipe?.map(
-        ({ id, title, image, healthScore, summary, instructions, diets, created}) => {
-          console.log(healthScore)
+        ({ id, title, image, healthscore, summary, instructions, diets, created}) => {
           return (
             <Card
               key={id}
               id={id}
               title={title}
               image={image}
-              healthScore={healthScore}
+              healthscore={healthscore}
               summary={summary}
               instructions={instructions}
               diets={diets}

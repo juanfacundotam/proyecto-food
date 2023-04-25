@@ -9,15 +9,18 @@ function App() {
   const [loadNavs, setLoadNavs] = useState(false)
   const location = useLocation();
 
+  const handleLoadNavs = (bool) => {
+    setLoadNavs(bool)
+  }
   return (
     <div className="App">
       {location.pathname !== "/" && <NavBar />}
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/home" element={<Home setLoadNavs={setLoadNavs}/>} />
-        <Route path="/detail/:id" element={<Detail setLoadNavs={setLoadNavs}/>} />
-        <Route path="/create" element={<Create setLoadNavs={setLoadNavs}/>} />
-        <Route path="/about" element={<About setLoadNavs={setLoadNavs}/>} />
+        <Route path="/home" element={<Home handleLoadNavs={handleLoadNavs}/>} />
+        <Route path="/detail/:id" element={<Detail handleLoadNavs={handleLoadNavs}/>} />
+        <Route path="/create" element={<Create handleLoadNavs={handleLoadNavs}/>} />
+        <Route path="/about" element={<About handleLoadNavs={handleLoadNavs}/>} />
       </Routes>
       {location.pathname !== "/" && loadNavs && <Footer />}
 

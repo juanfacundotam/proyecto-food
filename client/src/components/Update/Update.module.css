@@ -1,3 +1,6 @@
+.divUpdate {
+  position: relative;
+}
 .viewTitle {
     color: rgb(218, 198, 155);
     font-size: 20px;
@@ -28,4 +31,25 @@
     100% {
       opacity: 1;
     }
+  }
+
+  .button{
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.212);
+    top:50px;
+    right:15px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: rgba(17, 199, 93, 0.247);
+    backdrop-filter: blur(20px);
+  
+    cursor: pointer;
+    font-size: 22px;
+    padding: 0 0 2px 2px;
+    z-index: 222;
+    color: white;
+  }
+  .button:hover{
+    background-color: rgba(26, 184, 91, 0.767);
   }

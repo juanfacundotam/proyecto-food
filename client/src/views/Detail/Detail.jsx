@@ -5,17 +5,18 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getRecipesDetail, cleanDetail } from "../../redux/actions";
 
-const Detail = ({setLoadNavs}) => {
+const Detail = ({handleLoadNavs}) => {
   const dispatch = useDispatch();
   const params = useParams();
   const { id, title, image, healthscore, summary, instructions, diets } =
     useSelector((state) => state.recipe);
 
   useEffect(() => {
+    image && handleLoadNavs(true);
     dispatch(getRecipesDetail(params.id));
     return () => {
       dispatch(cleanDetail());
-        setLoadNavs(false);
+      handleLoadNavs(false);
     };
   }, []);
 
@@ -26,7 +27,7 @@ const Detail = ({setLoadNavs}) => {
 
         const results = arrayInstructions.map((elem) => {
           return (
-            <div className={style.divInstructionsItem}>
+            <div key={elem[0]} className={style.divInstructionsItem}>
               <p className={style.instructionNumber}>{elem[0]}</p>
               <p className={style.instructionText}>{elem[1]}</p>
             </div>
@@ -59,7 +60,6 @@ const Detail = ({setLoadNavs}) => {
     <div className={style.container}>
       {image ? (
         <>
-          {setLoadNavs(true)}
           <div className={style.detailWall}></div>
           <div className={style.divDetail}>
             <div className={style.divTop}>
@@ -73,7 +73,7 @@ const Detail = ({setLoadNavs}) => {
                 <p className={style.healthscore}>Health Score: {healthscore}</p>
                 <div className={style.divDiets}>
                   {diets?.map((diet) => {
-                    return <p className={style.diet}>🌮{diet}</p>;
+                    return <p key={diet}  className={style.diet}>🌮{diet}</p>;
                   })}
                 </div>
               </div>

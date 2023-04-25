@@ -17,7 +17,7 @@ import Pagination from "../../components/pagination/Pagination";
 import { searchByQuery } from "../../redux/actions";
 import Update from "../../components/Update/Update";
 
-const Home = ({ setLoadNavs }) => {
+const Home = ({ handleLoadNavs }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { recipes } = useSelector((state) => state);
@@ -43,9 +43,12 @@ const Home = ({ setLoadNavs }) => {
     setCurrentPage(pageNumber);
   };
 
-  setLoadNavs(true);
-  console.log(update);
+
+
   useEffect(() => {
+    if(!update && allDiets.length){
+      handleLoadNavs(true)
+    }
     if (!recipes.length) {
       dispatch(getRecipes());
     } else {
@@ -55,7 +58,7 @@ const Home = ({ setLoadNavs }) => {
       dispatch(getAllDiets());
     }
     return () => {
-      setLoadNavs(false);
+      handleLoadNavs(false);
     };
   }, [dispatch]);
 
@@ -102,6 +105,9 @@ const Home = ({ setLoadNavs }) => {
     dispatch(searchByQuery(search));
   };
 
+  const handleCloseToHome = () => {
+    setUpdate(false)
+  }
 
 
   // if (update) {
@@ -125,7 +131,7 @@ const Home = ({ setLoadNavs }) => {
           {update && allDiets.length ? (<>
             <div className={style.homeWall}></div>
             <Logo />
-            <Update setUpdate={setUpdate} setLoadNavs={setLoadNavs} recipeUpdate={recipeUpdate}/>
+            <Update handleCloseToHome={handleCloseToHome} handleLoadNavs={handleLoadNavs} recipeUpdate={recipeUpdate}/>
           </>
             ) : (
               <>
