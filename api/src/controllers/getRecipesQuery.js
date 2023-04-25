@@ -1,8 +1,10 @@
+require('dotenv').config();
+const {
+  URL_API, API_KEY
+} = process.env;
 const axios = require("axios");
 const { Recipe, Diet } = require("../db");
 const { Op } = require('sequelize');
-const apiKey = "apiKey=80ded4eb560843f7ab7a0f95adcf3f80";
-const urlApi = `https://api.spoonacular.com`;
 
 const getRecipeByQuery = async (title) => {
   const recipeBdd = await Recipe.findAll({
@@ -13,7 +15,7 @@ const getRecipeByQuery = async (title) => {
     },
   });
 
-  let recipeApi = await axios.get(`${urlApi}/recipes/complexSearch?${apiKey}&query=${title}`);
+  let recipeApi = await axios.get(`${URL_API}/recipes/complexSearch?${API_KEY}&query=${title}`);
   recipeApi = recipeApi.data.results;
   
   const result = [...recipeBdd, ...recipeApi];

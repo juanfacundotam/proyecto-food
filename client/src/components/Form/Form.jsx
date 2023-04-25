@@ -110,21 +110,11 @@ const Form = ({
     setRecipe({ ...recipe, diets: newDiets })
   };
   
-  // useEffect(() => {
-  //   handleServerFunction(recipe);
-  // }, [recipe]);
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     handleServerFunction(recipe, recipeSelected.id);
-    setRecipe({
-      title: "",
-      healthscore: "",
-      summary: "",
-      instructions: { 1: "" },
-      image: "",
-      diets: [],
-    });
   };
   
   //PRINT HTML INSTRUCTIONS AND DIETS **************************************
@@ -276,7 +266,7 @@ const Form = ({
           className={style.btnSubmit}
           type="submit"
           disabled={
-            errors.title || errors.healthscore || errors.summary || errors.image
+            errors.title || errors.healthscore || errors.summary || errors.image || errors.instructions
           }
         >
           {buttonName}

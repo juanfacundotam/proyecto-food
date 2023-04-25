@@ -13,12 +13,6 @@ const updateRecipe = async (id, recipe) => {
     await updateRecipe.update(recipe)
     
     await updateRecipe.setDiets(numDiets);
-    // update.dataValues.title = recipe.title;
-    // recipe.image = image;
-    // recipe.summary = summary;
-    // recipe.healthscore = healthscore;
-    // recipe.instructions = instructions;
-    // recipe.diets = diets;
 
     const newRecipeWhitDiets = await getRecipeById(id);
     return newRecipeWhitDiets;
@@ -26,10 +20,3 @@ const updateRecipe = async (id, recipe) => {
 
 module.exports = updateRecipe;
 
-// const diets = response.data.results.map((elem) => elem.diets);
-// const allDiets = diets.flat(Infinity);
-// const results = [...new Set(allDiets)];
-// results.forEach((elem) => {
-//   Diet.create({ name: elem });
-// });
-// return results;

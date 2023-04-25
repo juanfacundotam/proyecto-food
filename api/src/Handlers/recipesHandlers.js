@@ -21,15 +21,6 @@ const getRecipesQueryHandler = async (req, res) => {
   const {title} = req.query;
   try {
     const results = title ? await getRecipeByQuery(title) : await getAllRecipes();
-    // if(title) {
-      
-    //   console.log("One")
-    //   const result = await getRecipeByQuery(title);
-    //   res.status(200).json(result);
-    // } else {
-    //   console.log("ALl")
-    //   const allResults = await getAllRecipes();
-    // }
     res.status(200).json(results);
   } catch (error) {
     res.status(404).json({error: error.message});
@@ -44,7 +35,7 @@ const postRecipesHandler = async (req, res) => {
       const newRecipe = await postRecipe({title, image, summary, healthscore, instructions, diets, created: true})
       res.status(201).json(newRecipe);
   } catch (error) {
-      res.status(404).json({error: error.message});
+      res.status(400).json({error: error.message});
   }
   }
 
@@ -62,10 +53,9 @@ const postRecipesHandler = async (req, res) => {
   const updateRecipeHandler = async (req, res) => {
     const {idRecipe} = req.params;
     const recipe = req.body
-    // console.log(recipe);
     try {
       const recipeUpdate = await updateRecipe(idRecipe, recipe);
-      res.status(203).json({recipeUpdate, Update: "OK"});
+      res.status(200).json({recipeUpdate, Update: "OK"});
     } catch (error) {
       res.status(400).json({error: error.message});
     }

@@ -18,7 +18,6 @@ const Card = ({
   instructions,
   created,
   setUpdate,
-  setRecipeUpdate,
 }) => {
   const dispatch = useDispatch();
   let count = 0;
@@ -31,22 +30,24 @@ const Card = ({
     instructions,
     created,
   };
+
+
   const handleUpdateRecipe = async () => {
     await dispatch(getRecipesDetail(id));
     setUpdate(true);
   };
 
   const handleDeleteRecipe = () => {
-    let flag = myFunction();
+    let flag = flagFunction();
     if (flag) {
       dispatch(deleteRecipe(id));
-      dispatch(refreshRecipes());
       // eslint-disable-next-line no-restricted-globals
       location.reload();
+      dispatch(refreshRecipes());
     }
   };
 
-  function myFunction() {
+  function flagFunction() {
     // eslint-disable-next-line no-restricted-globals
     var result = confirm("¿Estás seguro de que deseas eliminar la receta?");
     if (result == true) {
@@ -57,6 +58,7 @@ const Card = ({
       return false;
     }
   }
+
   return (
     <div className={style.divCard}>
       {created && (

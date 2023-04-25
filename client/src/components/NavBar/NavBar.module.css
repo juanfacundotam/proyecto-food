@@ -63,3 +63,22 @@
         opacity:1;
     }
 }
+
+.divNavBar .spanLink {
+    position: absolute;
+    width: 1px;
+top: 55px;
+left: 150px;
+    font-size: 18px;
+}
+.divLink {
+    border: 1px solid green;
+    overflow: hidden;
+    flex-direction: column;
+    width: 80px;
+    height: 70px;
+    padding: 0;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
