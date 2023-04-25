@@ -2,34 +2,32 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import Form from "../Form/Form";
 import style from "../Update/Update.module.css";
-import { getRecipesDetail } from "../../redux/actions";
+import { getRecipes } from "../../redux/actions";
 
-import { useDispatch, useSelector } from "react-redux";
-const Update = ({ handleLoadNavs, handleCloseToHome}) => {
+import { useDispatch } from "react-redux";
+const Update = ({ handleLoadNavs, handleCloseToHome }) => {
   const dispatch = useDispatch();
   const buttonName = "Update";
-  const withRecipe = true
-  const { recipe } = useSelector((state) => state);
+  const withRecipe = true;
 
+ 
 
-
-  const handleServerFunction = (recipe) => {
-    console.log("entro")
-    console.log(recipe)
-    // axios
-    //   .put(`http://localhost:3001/recipes/${recipe.id}`, recipe)
-    //   .then((response) => {
-    //     // Si la respuesta es exitosa, redirige a otra página
-    //     if(response.data.title){
-    //       alert("Receta creada correctamente");
-    //       dispatch(getRecipes());
-    //       handleCloseToHome()
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     // Si hay un error, muestra un mensaje de error
-    //     alert("La receta no pudo crearse", error);
-    //   });
+  const handleServerFunction = (recipe, id) => {
+    axios
+      .put(`http://localhost:3001/recipes/${id}`, recipe)
+      .then(function (response) {
+        if (response.data.recipeUpdate.title) {
+          console.log("modifico")
+          dispatch(getRecipes());
+          handleCloseToHome();
+          alert("Receta modificada correctamente");
+          // eslint-disable-next-line no-restricted-globals
+          
+        }
+      })
+      .catch(function (error) {
+        alert("La receta NO pudo modificarse", error);
+      });
   };
 
   return (
@@ -42,7 +40,6 @@ const Update = ({ handleLoadNavs, handleCloseToHome}) => {
         handleLoadNavs={handleLoadNavs}
         buttonName={buttonName}
         handleServerFunction={handleServerFunction}
-        recipeForUpdate={recipe}
         withRecipe={withRecipe}
       />
     </div>

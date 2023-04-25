@@ -2,7 +2,11 @@ import style from "./Card.module.css";
 import { Link } from "react-router-dom";
 import { BsPencilSquare } from "react-icons/bs";
 import { MdDelete } from "react-icons/md";
-import { deleteRecipe, getRecipesDetail, refreshRecipes } from "../../redux/actions";
+import {
+  deleteRecipe,
+  getRecipesDetail,
+  refreshRecipes,
+} from "../../redux/actions";
 import { useDispatch } from "react-redux";
 
 const Card = ({
@@ -14,7 +18,7 @@ const Card = ({
   instructions,
   created,
   setUpdate,
-  setRecipeUpdate
+  setRecipeUpdate,
 }) => {
   const dispatch = useDispatch();
   let count = 0;
@@ -27,8 +31,8 @@ const Card = ({
     instructions,
     created,
   };
-  const handleUpdateRecipe = async() => {
-    await dispatch(getRecipesDetail(id))
+  const handleUpdateRecipe = async () => {
+    await dispatch(getRecipesDetail(id));
     setUpdate(true);
   };
 
@@ -57,15 +61,14 @@ const Card = ({
     <div className={style.divCard}>
       {created && (
         <div className={style.divUpdate}>
-          <BsPencilSquare
+          {/* <BsPencilSquare
             className={style.iconUpdate}
             onClick={handleUpdateRecipe}
           />
-          <MdDelete className={style.iconDelete} onClick={handleDeleteRecipe} />
-          {/* <button className={style.btnUpdate}><BsPencilSquare className={style.iconUpdate}/></button> */}
-          {/* <button className={style.btnDelete}><MdDelete className={style.iconDelete}/></button> */}
-          {/* <button className={style.btnUpdate}>update</button> */}
-          {/* <button className={style.btnDelete}>delete</button> */}
+          <MdDelete className={style.iconDelete} onClick={handleDeleteRecipe} /> */}
+
+          <button className={style.btnUpdate} onClick={handleUpdateRecipe} style={{cursor:"pointer"}}>update</button>
+          <button className={style.btnDelete} onClick={handleDeleteRecipe} style={{cursor:"pointer"}}>delete</button>
         </div>
       )}
       <img src={image} alt="Image Recipe" className={style.image} />

@@ -16,14 +16,16 @@ const Form = ({
   const recipeSelected = useSelector((state) => state.recipe);
   const dispatch = useDispatch();
   let [count, setCount] = useState(1);
+  
 
+  
   let obj = {};
   if (!withRecipe) {
     obj = {
       title: "",
       healthscore: "",
       summary: "",
-      instructions: "",
+      instructions: {1: ""},
       image: "",
       diets: [],
     };
@@ -37,7 +39,7 @@ const Form = ({
       diets: recipeSelected.diets,
     };
   }
-
+  
   const [recipe, setRecipe] = useState(obj);
   const [errors, setErrors] = useState({
     title: "",
@@ -47,10 +49,11 @@ const Form = ({
     image: "",
     diets: [],
   });
-
+  
   
   
   useEffect(() => {
+    setErrors(validation({ ...recipe}));
     handleLoadNavs(true);
     return () => {
       handleLoadNavs(false);
@@ -113,7 +116,7 @@ const Form = ({
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    handleServerFunction(recipe);
+    handleServerFunction(recipe, recipeSelected.id);
     setRecipe({
       title: "",
       healthscore: "",

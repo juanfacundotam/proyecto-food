@@ -14,7 +14,7 @@ const Create = ({ handleLoadNavs }) => {
   const buttonName = "Create";
   const withRecipe = false;
   
-  const handleServerFunction = (recipe) => {
+  const handleServerFunction = (recipe, id) => {
     axios
       .post("http://localhost:3001/recipes", recipe)
       .then((response) => {

@@ -1,8 +1,9 @@
 const getRecipeById = require("../controllers/getRecipeById");
-const getRecipeByQuery = require("../controllers/getRecipesQuery")
-const postRecipe = require("../controllers/postRecipe")
-const getAllRecipes = require("../controllers/getAllRecipes")
+const getRecipeByQuery = require("../controllers/getRecipesQuery");
+const postRecipe = require("../controllers/postRecipe");
+const getAllRecipes = require("../controllers/getAllRecipes");
 const deleteRecipe = require("../controllers/deleteRecipe");
+const updateRecipe = require("../controllers/updateRecipe")
 
 
 const getRecipesIdHandler = async (req, res) => {
@@ -60,8 +61,10 @@ const postRecipesHandler = async (req, res) => {
   
   const updateRecipeHandler = async (req, res) => {
     const {idRecipe} = req.params;
+    const recipe = req.body
+    // console.log(recipe);
     try {
-      const recipeUpdate = await updateRecipe(idRecipe);
+      const recipeUpdate = await updateRecipe(idRecipe, recipe);
       res.status(203).json({recipeUpdate, Update: "OK"});
     } catch (error) {
       res.status(400).json({error: error.message});
