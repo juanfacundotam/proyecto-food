@@ -86,7 +86,7 @@ const rootReducer = (state = initialState, action) => {
       console.log(action.payload)
       return { ...state, recipes: action.payload };
       case DELETE_RECIPE:
-        return {state, recipes: action.payload, allRecipes: action.payload }
+        return {...state }
     default:
       return { ...state };
   }

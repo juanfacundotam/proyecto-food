@@ -16,6 +16,7 @@ import {
 import Pagination from "../../components/pagination/Pagination";
 import { searchByQuery } from "../../redux/actions";
 import Update from "../../components/Update/Update";
+import Loading  from "../../components/Loading/Loading";
 
 const Home = ({ handleLoadNavs }) => {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ const Home = ({ handleLoadNavs }) => {
   const [search, setSearch] = useState("");
   const [update, setUpdate] = useState(false);
   const [recipeUpdate, setRecipeUpdate] = useState({});
+  const [loading, setLoading] = useState(false);
 
   //Clean Filters
   // const [order, setOrder] = useState("");
@@ -106,11 +108,14 @@ const Home = ({ handleLoadNavs }) => {
     setUpdate(false)
   }
   
+  const loadingFunction = (bool) => {
+    setLoading(bool)
+  }
 
   
   return (
     <div className={style.divHome} id="idHome">
-      {recipes.length ? (
+      {recipes.length && !loading? (
         <>
           {update && allDiets.length ? (<>
             <div className={style.homeWall}></div>
@@ -209,6 +214,7 @@ const Home = ({ handleLoadNavs }) => {
                 currentRecipe={currentRecipe}
                 setUpdate={setUpdate}
                 setRecipeUpdate={setRecipeUpdate}
+                loadingFunction={loadingFunction}
               />
               <Pagination
                 pageStyle={pageStyle}
@@ -221,7 +227,7 @@ const Home = ({ handleLoadNavs }) => {
           )}
         </>
       ) : (
-        <div className={style.customLoader}></div>
+          <Loading/>
       )}
     </div>
   );

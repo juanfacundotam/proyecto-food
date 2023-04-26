@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getRecipesDetail, cleanDetail } from "../../redux/actions";
+import Loading  from "../../components/Loading/Loading";
 
 const Detail = () => {
   const dispatch = useDispatch();
@@ -91,7 +92,7 @@ const Detail = () => {
           </div>
         </>
       ) : (
-        <div className={style.customLoader}></div>
+        <Loading/>
       )}
     </div>
   );

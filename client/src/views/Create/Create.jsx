@@ -7,6 +7,7 @@ import { getRecipes, getAllDiets } from "../../redux/actions";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
+import Loading  from "../../components/Loading/Loading";
 
 const Create = () => {
   const allDiets = useSelector((state) => state.diets);
@@ -46,7 +47,7 @@ const Create = () => {
           <Form buttonName={buttonName} handleServerFunction={handleServerFunction} withRecipe={withRecipe}/>
         </>
       ) : (
-        <div className={style.customLoader}></div>
+        <Loading/>
       )}
     </div>
   );

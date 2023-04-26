@@ -1,7 +1,7 @@
 import Card from "../Card/Card";
 import style from "./CardsContainer.module.css";
 
-const CardsContainer = ({ currentRecipe, setUpdate, setRecipeUpdate  }) => {
+const CardsContainer = ({ currentRecipe, setUpdate, setRecipeUpdate, loadingFunction }) => {
   if (currentRecipe.length === 1 && currentRecipe[0].hasOwnProperty("error")) {
     return <p className={style.noResults}>No hay resultados...</p>;
   }
@@ -22,6 +22,7 @@ const CardsContainer = ({ currentRecipe, setUpdate, setRecipeUpdate  }) => {
               created={created}
               setUpdate={setUpdate}
               setRecipeUpdate={setRecipeUpdate}
+              loadingFunction={loadingFunction}
             />
           );
         }

@@ -5,6 +5,7 @@ import { MdDelete } from "react-icons/md";
 import {
   deleteRecipe,
   getRecipesDetail,
+  getRecipes,
   refreshRecipes,
 } from "../../redux/actions";
 import { useDispatch } from "react-redux";
@@ -18,6 +19,7 @@ const Card = ({
   instructions,
   created,
   setUpdate,
+  loadingFunction
 }) => {
   const dispatch = useDispatch();
   let count = 0;
@@ -31,23 +33,23 @@ const Card = ({
     created,
   };
 
-
   const handleUpdateRecipe = async () => {
     await dispatch(getRecipesDetail(id));
     setUpdate(true);
   };
 
-  const handleDeleteRecipe = () => {
-    let flag = flagFunction();
+  const handleDeleteRecipe = async () => {
+    let flag = confirmFunction();
     if (flag) {
-      dispatch(deleteRecipe(id));
-      // eslint-disable-next-line no-restricted-globals
-      // location.reload();
-      dispatch(refreshRecipes());
+      loadingFunction(true);
+      await dispatch(deleteRecipe(id));
+      await dispatch(getRecipes());
+      loadingFunction(false);
+      console.log("111111")
     }
   };
 
-  function flagFunction() {
+  function confirmFunction() {
     // eslint-disable-next-line no-restricted-globals
     var result = confirm("¿Estás seguro de que deseas eliminar la receta?");
     if (result == true) {
@@ -69,8 +71,20 @@ const Card = ({
           />
           <MdDelete className={style.iconDelete} onClick={handleDeleteRecipe} /> */}
 
-          <button className={style.btnUpdate} onClick={handleUpdateRecipe} style={{cursor:"pointer"}}>update</button>
-          <button className={style.btnDelete} onClick={handleDeleteRecipe} style={{cursor:"pointer"}}>delete</button>
+          <button
+            className={style.btnUpdate}
+            onClick={handleUpdateRecipe}
+            style={{ cursor: "pointer" }}
+          >
+            update
+          </button>
+          <button
+            className={style.btnDelete}
+            onClick={handleDeleteRecipe}
+            style={{ cursor: "pointer" }}
+          >
+            delete
+          </button>
         </div>
       )}
       <img src={image} alt="Image Recipe" className={style.image} />

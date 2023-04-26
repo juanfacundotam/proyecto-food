@@ -1,6 +1,7 @@
 import style from "./About.module.css";
 import Logo from "../../components/Logo/Logo";
 import { useEffect, useState } from "react";
+import Loading  from "../../components/Loading/Loading";
 // import foto from "../../assets/fotoCV.jpg";
 const About = () => {
   const [foto, setFoto] = useState(null);
@@ -39,7 +40,7 @@ const About = () => {
           </div>
         </>
       ) : (
-        <div className={style.customLoader}></div>
+        <Loading/>
       )}
     </div>
   );
