@@ -1,86 +1,94 @@
 .divNavBar {
-    /* border: 1px solid fuchsia; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  /* border: 1px solid fuchsia; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    width: 350px;
-    height: 70px;
+  width: 350px;
+  height: 70px;
 
-    margin-top: 15px;
+  margin-top: 15px;
 
-    backdrop-filter: blur(20px);
-    background-color: rgba(156, 151, 151, 0.014);
-    border-radius: 20px;
-    position: relative;
+  backdrop-filter: blur(20px);
+  background-color: rgba(156, 151, 151, 0.014);
+  border-radius: 20px;
+  position: relative;
 
-    z-index: 111;
+  z-index: 111;
 }
 
 .active {
-    margin: 0 20px;
-    background-color: transparent;
-    color: rgb(70, 175, 117);
-    border-bottom: 1px solid rgb(75, 182, 123);
-    /* border-top: 1px solid rgb(75, 182, 123); */
-   
-    border-radius: 6px;
-    padding: 0 4px 2px 3px;
-    font-size: 25px;
-    text-decoration: none;
-    
+  margin: 0 20px;
+  background-color: transparent;
+  color: rgb(70, 175, 117);
+  border-bottom: 1px solid rgb(75, 182, 123);
+  /* border-top: 1px solid rgb(75, 182, 123); */
+
+  border-radius: 6px;
+  padding: 0 4px 2px 3px;
+  font-size: 25px;
+  text-decoration: none;
 }
 
 .disable {
-    margin: 0 20px;
-    color: rgb(71, 179, 119);
-    text-decoration: none;
-    font-size: 25px;
+  margin: 0 20px;
+  color: rgb(71, 179, 119);
+  text-decoration: none;
+  font-size: 25px;
 }
 .disable:hover {
-    color: rgb(149, 182, 74);
-  }
-
+  color: rgb(149, 182, 74);
+}
 
 .divNavBar {
-    
-    animation-name: fade-in;
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-delay: 0s;
-    animation-iteration-count: 1;
-    animation-direction: normal;
-    animation-fill-mode: none;
-        
-    /* shorthand
+  animation-name: fade-in;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: none;
+
+  /* shorthand
     animation: fade-in 2s linear 0s 1 normal none;*/
 }
 
 @keyframes fade-in {
-        
-    0% {
-        opacity:0;
-    }
-    100% {
-        opacity:1;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-.divNavBar .spanLink {
-    position: absolute;
-    width: 1px;
-top: 55px;
-left: 150px;
-    font-size: 18px;
-}
-.divLink {
-    border: 1px solid green;
-    overflow: hidden;
-    flex-direction: column;
-    width: 80px;
-    height: 70px;
-    padding: 0;
-    display: flex;
-    align-items: start;
-    justify-content: center;
-}
+@media screen and (max-width: 440px) {
+    .divNavBar {
+      width: 90%;
+    }
+  
+    .active {
+      font-size: 25px;
+      margin: 0 15px;
+    }
+  
+    .disable {
+      font-size: 25px;
+      margin: 0 15px;
+    }
+  }
+  @media screen and (max-width: 380px) {
+    .divNavBar {
+      width: 90%;
+    }
+  
+    .active {
+      font-size: 20px;
+      margin: 0 12px;
+    }
+  
+    .disable {
+      font-size: 20px;
+      margin: 0 12px;
+    }
+  }

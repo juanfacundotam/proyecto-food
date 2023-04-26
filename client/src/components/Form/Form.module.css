@@ -1,8 +1,6 @@
-
-
 .form {
   /* border: 1px solid red; */
-  background-color: rgba(255, 255, 255, 0.062); 
+  background-color: rgba(255, 255, 255, 0.062);
   backdrop-filter: blur(20px);
   width: fit-content;
   height: fit-content;
@@ -63,7 +61,7 @@
   background-color: #ffffff18;
   padding: 5px 20px 10px 20px;
   border-radius: 5px;
-  
+
   /* font-size: 10px; */
   /* border: 1px solid rgb(255, 187, 0); */
 }
@@ -91,7 +89,7 @@
   background-color: #0c0c0ccb;
   resize: none;
   width: 100%;
-  
+
   text-align: start;
   color: white;
   /* border: 1px solid green; */
@@ -141,16 +139,15 @@
   justify-content: start;
   align-items: center;
 }
-.form .divHealth input{
+.form .divHealth input {
   background-color: #0c0c0ce1;
   font-size: 12px;
-
 }
 
 .btnSubmit {
   background-color: rgb(39, 40, 41);
   width: 80px;
-  
+
   border-radius: 10px;
   border: transparent;
   text-align: center;
@@ -161,21 +158,18 @@
   margin-top: 30px;
   margin-bottom: 15px;
   cursor: pointer;
-transition: 0.3s;
+  transition: 0.3s;
   z-index: 999;
 }
 .btnSubmit:hover {
-/* color: #10f4e988; */
--webkit-box-shadow:0px 0px 7px 0px rgba(28,176,132,0.9);
--moz-box-shadow: 0px 0px 7px 0px rgba(28,176,132,0.9);
-box-shadow: 0px 0px 7px 0px rgba(28,176,132,0.9);
-transform: scale(1.05);
+  /* color: #10f4e988; */
+  -webkit-box-shadow: 0px 0px 7px 0px rgba(28, 176, 132, 0.9);
+  -moz-box-shadow: 0px 0px 7px 0px rgba(28, 176, 132, 0.9);
+  box-shadow: 0px 0px 7px 0px rgba(28, 176, 132, 0.9);
+  transform: scale(1.05);
 }
 
-
-
 .btnDel {
-
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.404);
   color: rgb(223, 191, 123);
@@ -276,7 +270,7 @@ transform: scale(1.05);
   border-radius: 10px;
 }
 .form .dietInput:checked {
-color: #000000;
+  color: #000000;
 }
 
 .customLoader {
@@ -324,7 +318,6 @@ padding: 5px;
   display: none;
 } */
 
-
 .form .divInputs .success {
   border: 1px solid rgba(0, 128, 0, 0.452);
   font-size: 13px;
@@ -340,7 +333,6 @@ padding: 5px;
   margin-top: 5px;
   margin-left: 18px;
   backdrop-filter: blur(20px);
-
 }
 .form .divInputs .errorHealth {
   border: 1px solid rgba(255, 0, 0, 0.24);
@@ -349,7 +341,6 @@ padding: 5px;
   margin-top: 5px;
   margin-left: 18px;
   backdrop-filter: blur(20px);
-
 }
 .textAreaSuccess {
   border: 1px solid rgba(0, 128, 0, 0.452);
@@ -357,8 +348,6 @@ padding: 5px;
 .textAreaError {
   border: 1px solid rgba(255, 0, 0, 0.253);
 }
-
-
 
 /*ERRORES ABAJO DEL BUTTON*/
 
@@ -394,4 +383,50 @@ padding: 5px;
   /* border: 1px solid magenta; */
   color: rgb(255, 255, 255);
   margin: 5px 20px 5px 20px;
+}
+
+@media screen and (max-width: 440px) {
+  .form {
+    width: 80%;
+  }
+
+  .form label {
+  }
+  .form .divInputs {
+    width: 85%;
+  }
+
+  .form .divTextArea {
+    width: 85%;
+  }
+
+  .divDiets {
+    width: 89%;
+  }
+  .divItemDiet {
+    width: 80%;
+  }
+
+  .form .dietInput {
+    width: 15%;
+  }
+
+  .divErrores {
+    width: 85%;
+  }
+
+  .divErrores p {
+    font-size: 12px;
+    padding: 0px 0px 0px 0px;
+  }
+
+  .errorsParagraph {
+    margin: 2px 5px 2px 8px;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .divErrores p {
+    font-size: 10px;
+  }
 }

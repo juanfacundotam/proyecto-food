@@ -227,7 +227,9 @@ const Home = ({ handleLoadNavs }) => {
           )}
         </>
       ) : (
+        <div className={style.divLoading}>
           <Loading/>
+        </div>
       )}
     </div>
   );

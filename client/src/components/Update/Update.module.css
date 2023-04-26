@@ -1,5 +1,9 @@
 .divUpdate {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .viewTitle {
     color: rgb(218, 198, 155);
@@ -46,10 +50,24 @@
   
     cursor: pointer;
     font-size: 22px;
-    padding: 0 0 2px 2px;
+    padding: 0 2px 2px 2px;
     z-index: 222;
     color: white;
   }
   .button:hover{
     background-color: rgba(26, 184, 91, 0.767);
   }
+
+  @media screen and (max-width: 440px) {
+    .button{
+      top:53px;
+      right:25px;
+      width: 27px;
+      height: 27px;
+      font-size: 15px;
+      padding: 0 2px 2px 2px;
+      z-index: 222;
+      color: white;
+    }
+  }
+  

@@ -27,3 +27,9 @@
     margin: 0;
     font-size: 12px;
   }
+
+  @media screen and (max-width: 768px) {
+    .divLogo{
+display: none;
+    }
+  }

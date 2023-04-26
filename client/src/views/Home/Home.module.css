@@ -1,6 +1,5 @@
 .divHome {
   min-height: 100vh;
-
   width: 100%;
 
   display: flex;
@@ -20,20 +19,19 @@
   display: flex;
   font-size: 10px;
   color: white;
-z-index: 999;
+  z-index: 999;
 }
 .divHome .divUpdate .updateBtn {
   z-index: 999;
   color: white;
   cursor: pointer;
-
 }
 .homeWall {
   background-image: url(../../assets/viewsWallPapers/fondo1.jpg),
     linear-gradient(100deg, #000000, #00000025);
   position: fixed;
   top: 0;
-z-index: 0;
+  z-index: 0;
   width: 100%;
   height: 100%;
   background-attachment: fixed;
@@ -76,7 +74,7 @@ z-index: 0;
 }
 .divSelects .searchBar {
   background-color: #3d3d3d52;
-  color: wheat;;
+  color: wheat;
 
   border: 1px solid rgba(255, 255, 255, 0.459);
   width: 180px;
@@ -95,7 +93,6 @@ z-index: 0;
 .divSelects .btnSearch:hover {
   background-color: #2c7263;
   color: rgb(240, 237, 231);
-
 }
 .divSelects .divSelect12 {
   /* border: 1px solid rebeccapurple; */
@@ -107,7 +104,7 @@ z-index: 0;
   border: 1px solid rgba(255, 255, 255, 0.452);
   background-color: #122020;
   color: rgb(70, 175, 117);
-  margin:5px;
+  margin: 5px;
   -moz-appearance: none;
 }
 
@@ -117,7 +114,7 @@ z-index: 0;
   border: 1px solid rgba(255, 255, 255, 0.452);
   background-color: #122020;
   color: rgb(70, 175, 117);
-  margin:5px;
+  margin: 5px;
   -moz-appearance: none;
 }
 .divSelects .divSelect34 {
@@ -130,7 +127,7 @@ z-index: 0;
   border: 1px solid rgba(255, 255, 255, 0.452);
   background-color: #122020;
   color: rgb(70, 175, 117);
-  margin:5px;
+  margin: 5px;
   -moz-appearance: none;
 }
 .divSelects .select4 {
@@ -139,7 +136,7 @@ z-index: 0;
   border: 1px solid rgba(255, 255, 255, 0.452);
   background-color: #122020;
   color: rgb(70, 175, 117);
-  margin:5px;
+  margin: 5px;
   -moz-appearance: none;
 }
 
@@ -157,14 +154,13 @@ z-index: 0;
   background-color: #23615dcc;
 }
 
-
-.divLogo{
+.divLogo {
   border: 1px solid rgba(148, 148, 148, 0.616);
   position: absolute;
   top: 0;
   left: 0px;
   margin: 20px;
-  padding:  5px 7px 7px 7px;
+  padding: 5px 7px 7px 7px;
   border-radius: 2px;
 }
 .divLogo .logo {
@@ -172,31 +168,111 @@ z-index: 0;
   height: 40px;
   padding: 0;
   margin: 0;
-
 }
-.divLogo .logoTitle{
+.divLogo .logoTitle {
   /* border: 1px solid green; */
-margin: 0;
-font-size: 15px;
+  margin: 0;
+  font-size: 15px;
 }
-.divLogo .logoParrafo{
+.divLogo .logoParrafo {
   /* border: 1px solid green; */
   margin: 0;
   font-size: 10px;
 }
 
 .divSelects {
-
   animation-name: fadeIn;
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
   animation-delay: 1s;
 
   animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.divLoading {
+  margin-top: 22%;
+}
+
+@media screen and (max-width: 1200px) {
+  .divLoading {
+    margin-top: 30%;
+  }
+}
+@media screen and (max-width: 992px) {
+  .divLoading {
+    margin-top: 40%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .divLoading {
+    margin-top: 50%;
+  }
+}
+@media screen and (max-width: 590px) {
+  .divLoading {
+    margin-top: 55%;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .divSelects {
+    margin-top: 35px;
   }
 
-  @keyframes fadeIn {
-  0% {opacity: 0;}
-  100% {opacity: 1;}
-  } 
+  .divSelects .divSearch {
+    margin-bottom: 7px;
+  }
+  .divSelects .searchBar {
+    width: 60%;
+  }
 
+  .divSelects .divSelect12 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .divSelect12 .select1 {
+    margin-bottom: 5px;
+    width: 85%;
+  }
+
+  .divSelect12 .select2 {
+    margin-bottom: 5px;
+    width: 85%;
+  }
+  .divSelects .divSelect34 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .divSelects .select3 {
+    margin-bottom: 5px;
+    width: 85%;
+  }
+  .divSelects .select4 {
+    margin-bottom: 5px;
+    width: 85%;
+  }
+
+  .btnClean {
+    height: 27px;
+    font-size: 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.452);
+    background-color: #193a38cc;
+    color: rgb(248, 231, 194);
+    cursor: pointer;
+    /* -moz-appearance: none; */
+  }
+}

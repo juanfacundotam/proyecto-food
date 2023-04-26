@@ -2,7 +2,7 @@
     width: 30px;
     height: 30px;
     border: 2px solid #10f4e9;
-    margin-top: 250px;
+
     display: grid;
     animation: h1 4s infinite linear;
   }

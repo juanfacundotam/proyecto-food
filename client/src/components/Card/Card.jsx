@@ -65,13 +65,13 @@ const Card = ({
     <div className={style.divCard}>
       {created && (
         <div className={style.divUpdate}>
-          {/* <BsPencilSquare
+          <BsPencilSquare
             className={style.iconUpdate}
             onClick={handleUpdateRecipe}
           />
-          <MdDelete className={style.iconDelete} onClick={handleDeleteRecipe} /> */}
+          <MdDelete className={style.iconDelete} onClick={handleDeleteRecipe} />
 
-          <button
+          {/* <button
             className={style.btnUpdate}
             onClick={handleUpdateRecipe}
             style={{ cursor: "pointer" }}
@@ -84,7 +84,7 @@ const Card = ({
             style={{ cursor: "pointer" }}
           >
             delete
-          </button>
+          </button> */}
         </div>
       )}
       <img src={image} alt="Image Recipe" className={style.image} />

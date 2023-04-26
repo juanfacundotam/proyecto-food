@@ -68,3 +68,44 @@ padding: 5px 5px 6px 5px;
 .items a:hover {
   transform: scale(1.02);
 }
+
+@media screen and (max-width: 440px) {
+  .divPagination {
+    padding: 0 15px;
+  }
+
+  .items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 13px;
+    height: 18px;
+    border: 1px solid rgb(216, 198, 158);
+    margin: 3px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 5px;
+  }
+  .items:hover {
+    transform: scale(1.08);
+  }
+  .currentPage {
+    border: 2px solid rgba(63, 202, 126, 0.562);
+    margin: 0;
+    padding: 0;
+    width: 13px;
+  
+  }
+  
+  .items a {
+    text-decoration: none;
+    cursor: pointer;
+  font-size: 9px;
+  border-radius: 5px;
+  padding: 5px 5px 6px 5px;
+    color: rgb(223, 191, 123);
+  }
+  .items a:hover {
+    transform: scale(1.02);
+  }
+}
