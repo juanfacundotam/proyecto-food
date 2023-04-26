@@ -10,23 +10,19 @@ const Update = ({ handleCloseToHome }) => {
   const buttonName = "Update";
   const withRecipe = true;
 
- 
-
   const handleServerFunction = (recipe, id) => {
     axios
       .put(`http://localhost:3001/recipes/${id}`, recipe)
       .then(function (response) {
         if (response.data.recipeUpdate.title) {
-          console.log("modifico")
           dispatch(getRecipes());
           handleCloseToHome();
           alert("Receta modificada correctamente");
           // eslint-disable-next-line no-restricted-globals
-          
         }
       })
-      .catch(function (error) {
-        alert("La receta NO pudo modificarse", error);
+      .catch(error => {
+        alert("La receta NO pudo modificarse");
       });
   };
 

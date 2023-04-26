@@ -42,7 +42,7 @@ const Card = ({
     if (flag) {
       dispatch(deleteRecipe(id));
       // eslint-disable-next-line no-restricted-globals
-      location.reload();
+      // location.reload();
       dispatch(refreshRecipes());
     }
   };
@@ -79,9 +79,9 @@ const Card = ({
           {title}
         </Link>
         <div className={style.divDiets}>
-          {diets?.map((diet) => {
+          {diets?.map((diet, index) => {
             return (
-              <p key={++count} className={style.diet}>
+              <p key={index} className={style.diet}>
                 ✔{diet}
               </p>
             );

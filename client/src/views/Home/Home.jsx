@@ -46,7 +46,7 @@ const Home = ({ handleLoadNavs }) => {
 
 
   useEffect(() => {
-
+    
     if (!recipes.length) {
       dispatch(getRecipes());
     } else {
@@ -187,8 +187,8 @@ const Home = ({ handleLoadNavs }) => {
                     </option>
                     <option value="All">All</option>
                     {allDiets.length &&
-                      allDiets.map((diet) => (
-                        <option key={diet.id} value={diet.name}>
+                      allDiets.map((diet, index) => (
+                        <option key={index} value={diet.name}>
                           {diet.name}
                         </option>
                       ))}

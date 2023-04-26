@@ -255,7 +255,8 @@ transform: scale(1.05);
 }
 .divItemDiet {
   /* border: 1px solid rgb(0, 110, 255); */
-  width: 100%;
+  width: 210px;
+  /* width: 28px; */
   display: flex;
   align-items: center;
   justify-content: end;

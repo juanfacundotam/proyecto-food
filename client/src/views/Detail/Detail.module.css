@@ -10,15 +10,15 @@
 .divDetail {
   /* border: 3px solid green; */
   position: relative;
-  width: 800px;
+  width: 650px;
   height: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   color: white;
-  margin: 140px 0;
-  padding: 30px;
+  margin: 80px 0 140px 0;
+  padding: 25px;
   border-radius: 20px;
   z-index: 111;
   background-color: rgba(24, 134, 92, 0.219);
@@ -39,6 +39,7 @@
   margin: 0;
   /* border: 3px solid crimson; */
 width: 50%;
+height: 250px;
 border-radius: 15px;
 }
 
@@ -59,7 +60,7 @@ border-radius: 15px;
   margin: 50px 15px 20px 15px;
   width: fit-content;
   max-height: 180px;
-  font-size: 25px;
+  font-size: 20px;
   /* margin: 20px; */
 }
 .divDetail .divTopRight .healthscore {
@@ -68,7 +69,7 @@ border-radius: 15px;
   border-radius: 7px;
   background-color: #22839b;
   padding: 5px 15px;
-
+font-size: 15px;
   margin: 0 0 5px 0;
 }
 
@@ -80,11 +81,12 @@ border-radius: 15px;
   justify-content: center;
   flex-wrap: wrap;
   margin: 10px 0 5px 0;
+  font-size: 15px;
   max-width: 400px;
   max-height: 100px;
 }
 .divDetail .divDiets .diet {
-  margin: 0;
+  margin: 0 7px;
 }
 
 
@@ -93,10 +95,15 @@ border-radius: 15px;
 
 .divDetail .divSummary {
   /* border: 3px solid crimson; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 0;
-  width: 700px;
+  width: fit-content;
+  max-width: 625px;
   height: fit-content;
-  margin: 30px 0;
+  margin-bottom: 20px;
   
 }
 
@@ -104,12 +111,12 @@ border-radius: 15px;
 
 .divDetail .divSummary  .summaryTitle{
   /* border: 3px solid crimson; */
-  margin: 15px;
+  margin: 10px;
   
 }
 .divDetail .summary {
   /* border: 3px solid crimson; */
-  text-align: start;
+  text-align: justify;
   margin: 0;
   
 }
@@ -121,20 +128,36 @@ border-radius: 15px;
   align-items: center;
   justify-content: center;
   width: 700px;
-  margin: 10px;
+margin-top: 30px;
+margin-bottom: 20px;
   text-align: start;
+  /* margin-top: 30px; */
+}
+.divInstructionsHTML {
+  /* border: 3px solid green; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 650px;
+  /* margin: 20px; */
+  text-align: start;
+  /* margin-top: 30px; */
+}
+.divDetail .divInstructions .titleInstructions{
+  margin: 0;
 }
 .divDetail .divInstructionsItem{
   /* border: 3px solid crimson; */
-  width: 700px;
+  width: 650px;
   display: flex;
   align-items: start;
   justify-content: center;
-  margin: 10px;
+  margin: 10px 15px 10px 0;
 }
 .divDetail .divInstructions .instructionNumber{
   /* border: 3px solid crimson; */
-  font-size: 20px;
+  font-size: 18px;
   margin: 0 15px;
   
 }

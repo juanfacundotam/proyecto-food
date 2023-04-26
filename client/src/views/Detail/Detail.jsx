@@ -36,7 +36,7 @@ const Detail = () => {
       }
       return (
         <div
-          className={style.divInstructions}
+          className={style.divInstructionsHTML}
           dangerouslySetInnerHTML={{ __html: instructions }}
         />
       );
@@ -72,7 +72,7 @@ const Detail = () => {
                 <p className={style.healthscore}>Health Score: {healthscore}</p>
                 <div className={style.divDiets}>
                   {diets?.map((diet) => {
-                    return <p key={diet}  className={style.diet}>🌮{diet}</p>;
+                    return <p key={diet}  className={style.diet}>✔{diet}</p>;
                   })}
                 </div>
               </div>
@@ -85,7 +85,7 @@ const Detail = () => {
               />
             </div>
             <div className={style.divInstructions}>
-              <h3>Instructions</h3>
+              <h3 className={style.titleInstructions}>Instructions</h3>
               {getInstructions()}
             </div>
           </div>

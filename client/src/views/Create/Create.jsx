@@ -3,9 +3,10 @@ import style from "./Create.module.css";
 import Logo from "../../components/Logo/Logo";
 import Form from "../../components/Form/Form";
 import { useSelector } from "react-redux";
-import { getRecipes } from "../../redux/actions";
+import { getRecipes, getAllDiets } from "../../redux/actions";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 const Create = () => {
   const allDiets = useSelector((state) => state.diets);
@@ -30,6 +31,10 @@ const Create = () => {
         alert("La receta no pudo crearse", error);
       });
   }
+
+  useEffect(() => {
+    dispatch(getAllDiets());
+  }, [])
   //*************************************************************** */
   return (
     <div className={style.divForm}>
