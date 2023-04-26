@@ -5,18 +5,17 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getRecipesDetail, cleanDetail } from "../../redux/actions";
 
-const Detail = ({handleLoadNavs}) => {
+const Detail = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const { id, title, image, healthscore, summary, instructions, diets } =
     useSelector((state) => state.recipe);
 
   useEffect(() => {
-    image && handleLoadNavs(true);
     dispatch(getRecipesDetail(params.id));
     return () => {
       dispatch(cleanDetail());
-      handleLoadNavs(false);
+
     };
   }, []);
 

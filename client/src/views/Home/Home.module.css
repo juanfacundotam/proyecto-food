@@ -108,27 +108,29 @@ z-index: 0;
 .divSelects .searchBar {
   background-color: #3d3d3d52;
   color: wheat;;
-  /* border: 1px solid rgba(255, 255, 255, 0.459); */
+
+  border: 1px solid rgba(255, 255, 255, 0.459);
+  width: 180px;
   height: 17px;
-  border-radius: 5px;
+  border-radius: 3px;
   margin-right: 10px;
 }
 .divSelects .btnSearch {
-  background-color: #10745e;
+  background-color: #125c4cec;
   border: none;
   color: wheat;
   height: 23px;
-  border-radius: 5px;
+  border-radius: 3px;
   cursor: pointer;
 }
 .divSelects .btnSearch:hover {
-  background-color: #17bd99;
+  background-color: #2c7263;
   color: rgb(240, 237, 231);
 
 }
 .divSelects .divSelect12 {
   /* border: 1px solid rebeccapurple; */
-  margin-bottom: 10px;
+  margin-bottom: 2px;
 }
 .select1 {
   height: 21px;
@@ -151,7 +153,7 @@ z-index: 0;
 }
 .divSelects .divSelect34 {
   /* border: 1px solid rebeccapurple; */
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .divSelects .select3 {
   height: 21px;
@@ -173,7 +175,8 @@ z-index: 0;
 }
 
 .btnClean {
-  height: 30px;
+  height: 27px;
+  font-size: 12px;
   border-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.452);
   background-color: #193a38cc;

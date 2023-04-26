@@ -46,9 +46,7 @@ const Home = ({ handleLoadNavs }) => {
 
 
   useEffect(() => {
-    if(!update && allDiets.length){
-      handleLoadNavs(true)
-    }
+
     if (!recipes.length) {
       dispatch(getRecipes());
     } else {
@@ -57,11 +55,10 @@ const Home = ({ handleLoadNavs }) => {
     if (!allDiets.length) {
       dispatch(getAllDiets());
     }
-    return () => {
-      handleLoadNavs(false);
-    };
+
   }, [dispatch]);
 
+  
   const handleOrderId = (event) => {
     dispatch(orderId(event.target.value));
     document.getElementById("select2").value = "HealthScore";
@@ -80,7 +77,7 @@ const Home = ({ handleLoadNavs }) => {
     dispatch(filterByDiets(event.target.value));
     // dispatch(filterCreated(event.target.value));
   };
-
+  
   const handleCleanFilters = () => {
     dispatch(refreshRecipes());
     // Reinicia los valores predeterminados de los selectores
@@ -97,33 +94,20 @@ const Home = ({ handleLoadNavs }) => {
     // setFilterDiets("");
     // setFilterApiBdd("");
   };
-
+  
   const handleSearchChange = (event) => {
     setSearch(event.target.value);
   };
   const handleBtnSearch = () => {
     dispatch(searchByQuery(search));
   };
-
+  
   const handleCloseToHome = () => {
     setUpdate(false)
   }
+  
 
-
-  // if (update) {
-  //   return (
-  //     <div className={style.divHome} id="idHome">
-  //       <div className={style.homeWall}></div>
-  //       <div className={style.divUpdate}>
-  //         <h1 className={style.updateTitle}>Estoy modificando</h1>
-  //         <button onClick={handleCloseUpdate} className={style.updateBtn}>
-  //           X
-  //         </button>
-  //       </div>
-  //     </div>
-  //   );
-  // }
-
+  
   return (
     <div className={style.divHome} id="idHome">
       {recipes.length ? (
@@ -131,10 +115,11 @@ const Home = ({ handleLoadNavs }) => {
           {update && allDiets.length ? (<>
             <div className={style.homeWall}></div>
             <Logo />
-            <Update handleCloseToHome={handleCloseToHome} handleLoadNavs={handleLoadNavs} recipeUpdate={recipeUpdate}/>
+            <Update handleCloseToHome={handleCloseToHome}  recipeUpdate={recipeUpdate}/>
           </>
             ) : (
               <>
+              
               <div className={style.homeWall}></div>
               <Logo />
               <div className={style.divSelects}>

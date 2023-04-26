@@ -2,8 +2,7 @@ import style from "./About.module.css";
 import Logo from "../../components/Logo/Logo";
 import { useEffect, useState } from "react";
 // import foto from "../../assets/fotoCV.jpg";
-
-const About = ({ handleLoadNavs }) => {
+const About = () => {
   const [foto, setFoto] = useState(null);
 
 
@@ -15,10 +14,6 @@ const About = ({ handleLoadNavs }) => {
       .catch((error) => {
         console.log(error);
       });
-      foto && handleLoadNavs(true);
-    return () => {
-      handleLoadNavs(false);
-    };
   }, []);
   return (
     <div className={style.divAbout}>

@@ -5,7 +5,7 @@ import style from "../Update/Update.module.css";
 import { getRecipes } from "../../redux/actions";
 
 import { useDispatch } from "react-redux";
-const Update = ({ handleLoadNavs, handleCloseToHome }) => {
+const Update = ({ handleCloseToHome }) => {
   const dispatch = useDispatch();
   const buttonName = "Update";
   const withRecipe = true;
@@ -37,7 +37,6 @@ const Update = ({ handleLoadNavs, handleCloseToHome }) => {
         x
       </button>
       <Form
-        handleLoadNavs={handleLoadNavs}
         buttonName={buttonName}
         handleServerFunction={handleServerFunction}
         withRecipe={withRecipe}

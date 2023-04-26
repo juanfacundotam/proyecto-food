@@ -83,7 +83,7 @@ backdrop-filter: blur(20px);
 .divUpdate .iconUpdate{
 color:white;
 background-color: black;
-padding: 5px;
+padding: 8px;
 border-radius: 5px;
 cursor: pointer;
 }
@@ -95,7 +95,7 @@ background-color: white;
 .divUpdate .iconDelete{
   color:white;
   background-color: black;
-  padding: 5px;
+  padding: 8px;
   border-radius: 5px;
   cursor: pointer;
 }

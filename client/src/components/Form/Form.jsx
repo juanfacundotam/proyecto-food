@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import validation from "./validation";
 
 const Form = ({
-  handleLoadNavs,
   buttonName,
   handleServerFunction,
   withRecipe,
@@ -54,11 +53,7 @@ const Form = ({
   
   useEffect(() => {
     setErrors(validation({ ...recipe}));
-    handleLoadNavs(true);
-    return () => {
-      handleLoadNavs(false);
-    };
-  }, [dispatch, handleLoadNavs]);
+  }, [dispatch]);
   
   //HANDLERS *********************************************************************************
   const handleInputChange = (event) => {

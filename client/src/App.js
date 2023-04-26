@@ -6,23 +6,20 @@ import Footer from "./components/Footer/Footer";
 import { useState } from "react";
 
 function App() {
-  const [loadNavs, setLoadNavs] = useState(false)
   const location = useLocation();
 
-  const handleLoadNavs = (bool) => {
-    setLoadNavs(bool)
-  }
+
   return (
     <div className="App">
       {location.pathname !== "/" && <NavBar />}
       <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/home" element={<Home handleLoadNavs={handleLoadNavs}/>} />
-        <Route path="/detail/:id" element={<Detail handleLoadNavs={handleLoadNavs}/>} />
-        <Route path="/create" element={<Create handleLoadNavs={handleLoadNavs}/>} />
-        <Route path="/about" element={<About handleLoadNavs={handleLoadNavs}/>} />
+        <Route path="/" element={<Landing/>} />
+        <Route path="/home" element={<Home/>} />
+        <Route path="/detail/:id" element={<Detail/>} />
+        <Route path="/create" element={<Create/>} />
+        <Route path="/about" element={<About/>} />
       </Routes>
-      {location.pathname !== "/" && loadNavs && <Footer />}
+      {location.pathname !== "/" && <Footer />}
 
     </div>
   );

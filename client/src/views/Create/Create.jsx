@@ -7,7 +7,7 @@ import { getRecipes } from "../../redux/actions";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-const Create = ({ handleLoadNavs }) => {
+const Create = () => {
   const allDiets = useSelector((state) => state.diets);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const Create = ({ handleLoadNavs }) => {
           <div className={style.createWall}></div>
           <Logo />
           <h1 className={style.viewTitle}>Create New Recipe</h1>
-          <Form handleLoadNavs={handleLoadNavs} buttonName={buttonName} handleServerFunction={handleServerFunction} withRecipe={withRecipe}/>
+          <Form buttonName={buttonName} handleServerFunction={handleServerFunction} withRecipe={withRecipe}/>
         </>
       ) : (
         <div className={style.customLoader}></div>
